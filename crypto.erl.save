@@ -1,0 +1,13 @@
+-module(crypto).
+-export([start/1, charv/1]).
+
+start(N) ->
+	Str = "abcdef",
+	X = N * N,
+	Y = X - 3,
+	Y.
+charv(C) ->
+	StrX = "abcdefghi",
+	io:format("~w", "a"),
+	Letter = $C,
+	Leter.
