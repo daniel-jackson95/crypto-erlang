@@ -23,13 +23,29 @@ get_char_position(C)->
 vigenereCipher_recursive([PT_head|[]],[Key_head|_])->
 	PT_value = get_char_position([PT_head]),
 	Key_value = get_char_position([Key_head]),
-	NewValue = PT_value + Key_value,
+	Value = PT_value - Key_value,
+	if
+		Value > 25 ->
+			NewValue = Value - 26;
+		Value < 0 ->
+			NewValue = Value + 26;
+		true ->
+			NewValue = Value
+	end,
 	int_to_char(NewValue);
 vigenereCipher_recursive([PT_head|PT_tail],[Key_head|Key_tail])->
 	PT_value = get_char_position([PT_head]),
 	Key_value = get_char_position([Key_head]),
-	NewValue = PT_value + Key_value,
-	int_to_char(NewValue) ++ vigenereCipher_recursive(PT_tail, Key_tail).
+	Value = PT_value - Key_value,
+	if
+		Value > 25 ->
+			NewValue = Value - 26;
+		Value < 0 ->
+			NewValue = Value + 26;
+		true ->
+			NewValue = Value
+	end,
+	int_to_char(NewValue) ++ vigenereCipher_recursive(PT_tail, Key_tail ++ [Key_head]).
 
 vigenereCipher(PlainText, Key)->
 	%KeyLength = string:len(Key),
@@ -45,6 +61,6 @@ exercise2()->
 	vigenereCipher(PlainText, Key).
 
 vtest()-> %BDE
-	vigenereCipher("ABC", "BCC").
+	vigenereCipher("ABCABCBBBB", "BCC").
 vtest2()-> %expected "BEDDCFBED"
 	vigenereCipher("ABCABCABC", "BD").
