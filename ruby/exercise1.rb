@@ -1,4 +1,5 @@
 require_relative 'tess'
+require_relative 'caesar/caesar'
 
 def letter_analysis(str)
 	letters = Hash.new(0)
@@ -51,29 +52,20 @@ def word_frequency_count
 end
 
 def start
+	init_tess 5
+
 	letter_frequency = letter_analysis exercise1_ciphertext
 
 	common_letter = letter_frequency.to_a.at(0)
 
 	key = get_key(common_letter[0], 'E')
-	puts 'common letter: ' + common_letter[0].to_s
-	puts 'key: ' + key.to_s
 
-	decrypted_text = cipher_decrypt exercise1_ciphertext, key
+	decrypted_text = caesar_decrypt exercise1_ciphertext, key
 
-	word_frequency = tess27wordfrequency
-	puts word_frequency
-
-
-	word_frequency_count
+	# word_frequency = get_word_freq_length decrypted_text
+	# puts word_frequency
+	puts decrypted_text
 end
-
-# pretty_hash = Hash[tess27hash.sort_by{|k, v| v}.reverse]
-
-
-# start
-# puts 'Decrypted text:'
-# puts cipher_decrypt exercise1_ciphertext, 14
 
 def get_key cipher_text, wanted_character
 	ct_v = cipher_text.ord - 65
@@ -83,16 +75,7 @@ def get_key cipher_text, wanted_character
 
 	diff += 26 if diff < 0
 
-	diff
+	diff + 65
 end
-# A = 0
-# B = 1
-# C = 2
-# D = 3
-# E = 4
-# F = 5
-# G = 6
-# puts 'Decrypt S -> E'
-# puts get_key 'S', 'E'
 
 start

@@ -12,7 +12,7 @@ def key_from_string key_str
 	str
 end
 def start
-	init_tess
+	init_tess 9
 	#plain_text = vigenere_decrypt cipher_text, [[FIND THE KEY]]
 
 	columns = 6
