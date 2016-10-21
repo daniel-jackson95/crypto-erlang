@@ -17,8 +17,21 @@ def start
 
 	columns = 6
 	most_frequent_letters = 3 #5 - make it the max of [e] and [t]
-	top_letters_of_e = 3
+	top_letters_of_e = 1 #3
 	top_letters_of_t = 1
+
+	letter_frequencies = {'E': 3, 'T': 1}
+
+	letter_frequencies.each do |k,v|
+		# puts 'Char ['+letter_frequencies[i]+']'
+		puts 'Char ['+k.to_s+','+v.to_s+']'
+		for j in 0...v do 
+			puts j
+		end
+	end
+
+	puts 'end of loop'
+
 
 	cipher_text_cols = split_string_into_cols cipher_text, columns
 	cipher_text_cols_frequency = []
