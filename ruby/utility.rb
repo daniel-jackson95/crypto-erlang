@@ -14,26 +14,64 @@ def letter_analysis(str)
 
 	letters.sort_by{|k,v| v}.reverse
 end
+def key_from_string key_str 
+	str = ""
+	for i in 0...key_str.length do 
+		str += (key_str[i].ord + 65).chr
+	end
+	str
+end
 
+def get_cipher_text_letter_frequency cipher_text, columns, most_frequent_letters
+	split_cols = split_string_into_cols cipher_text, columns
+	cipher_text_split_cols_freq = []
+	cipher_shift_permutations = []
+	for i in 0...columns do 
+		cipher_text_split_cols_freq[i] = split_string_by_letter_frequency split_cols[i], most_frequent_letters
+	end
+	cipher_text_split_cols_freq
+end
 
-# def test	
-# 	puts 'Arrays: [A,B] [C,D] [E,F]'
-# 	puts 'Expected [A,C,E] [A,C,F] [A,D,E] [A,D,F] [B,C,E] [B,C,F] [B,D,E] [B,D,F]'
+def get_key_permutations split_text_letter_freq, letter_frequencies
+	cipher_shift_permutations = []
+	for i in 0...split_text_letter_freq.length do 
+		cipher_shift_permutations[i] = []
 
-# 	a1 = ['A', 'B', 'X']
-# 	a2 = ['C', 'D']
-# 	a3 = ['E', 'F']
-# 	a4 = ['G', 'H']
+		col = split_text_letter_freq[i]
 
-# 	arrays = [a1, a2, a3, a4]
+		shift_index = 0
+		letter_frequencies.each do |k,v|
+			for j in 0...v do 
+				shift_value = col[j][0].ord - k.to_s.ord
+				shift_value += 26 if shift_value < 0
+				cipher_shift_permutations[i][shift_index] = shift_value
 
-# 	head, *rest = arrays
+				shift_index += 1
+			end
+		end
+	end
+	cipher_shift_permutations
+end
 
-# 	puts 'Permutation:'
-# 	perms = head.product(*rest)
-# 	for i in 0...perms.length do
-# 		puts "#{perms[i]}"
-# 	end
-# end
+def split_string_by_letter_frequency str, cols
+	letter_freqs = str.chars.group_by(&:chr).map { |k, v| [k, v.size] }.sort_by {|k,v| v}.reverse
 
-# test
+	freqs = []
+	for i in 0...cols do 
+		freqs[i] = letter_freqs[i]
+	end
+	freqs
+end
+def split_string_into_cols str, cols
+	str_cols = Array.new(cols)
+
+	for i in 0...cols do
+		str_cols[i] = ""
+	end
+
+	for i in 0...str.length do 
+		str_cols[ i % cols ] += str[i] 
+	end
+
+	str_cols
+end
