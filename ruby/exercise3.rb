@@ -21,114 +21,73 @@ def start
 	top_letters_of_t = 1
 
 	letter_frequencies = {'E': 3, 'T': 1}
-
-	letter_frequencies.each do |k,v|
-		# puts 'Char ['+letter_frequencies[i]+']'
-		puts 'Char ['+k.to_s+','+v.to_s+']'
-		for j in 0...v do 
-			puts j
-		end
-	end
-
-	puts 'end of loop'
+	letter_frequencies_max_value = 3
 
 
-	cipher_text_cols = split_string_into_cols cipher_text, columns
-	cipher_text_cols_frequency = []
-	cipher_permutation_of_shifts = []
+	# Get most common letters
+	# Permute the letters (E: 3, T:1 = 4) [4 ^ 6 = 4096]
+
+	cipher_text_split_cols = split_string_into_cols cipher_text, columns
+	cipher_text_split_cols_freq = []
+	cipher_shift_permutations = []
 	for i in 0...columns do 
-		cipher_text_cols_frequency[i] = split_string_by_letter_frequency cipher_text_cols[i], most_frequent_letters
-		cipher_permutation_of_shifts[i] = []
+		cipher_text_split_cols_freq[i] = split_string_by_letter_frequency cipher_text_split_cols[i], letter_frequencies_max_value
 	end
 
-	puts cipher_text_cols_frequency.length
 	for i in 0...columns do 
-		cipher_permutation_of_shifts[i] = []
+		cipher_shift_permutations[i] = []
+		#[0] = [T, E, F, G]
+		#[1] = [E, O, A, B]
 
-		col = cipher_text_cols_frequency[i]
-		for j in 0...top_letters_of_e do 
-			shift_to_e = col[j][0].ord - 'E'.ord
-			shift_to_e += 26 if shift_to_e < 0
-			cipher_permutation_of_shifts[i][j] = shift_to_e
+		col = cipher_text_split_cols_freq[i]
 
-			# puts "Turn [#{col[j][0]}] into [E] -> Shift by [#{shift_to_e}, #{(shift_to_e+65).chr}]"
-		end
+		puts "COL [#{col}]"
 
-		for j in 0...top_letters_of_t do 
-			shift_to_t = col[j][0].ord - 'T'.ord
-			shift_to_t += 26 if shift_to_t < 0
-			cipher_permutation_of_shifts[i][top_letters_of_e + j] = shift_to_t
-			# puts "Turn [#{col[j][0]}] into [T] -> Shift by [#{shift_to_t}, #{(shift_to_t+65).chr}]"
+		shift_index = 0
+		letter_frequencies.each do |k,v|
+			for j in 0...v do 
+				shift_value = col[j][0].ord - k.to_s.ord
+				shift_value += 26 if shift_value < 0
+				cipher_shift_permutations[i][shift_index] = shift_value
+
+				shift_index += 1
+			end
 		end
 	end
 
-	head, *rest = cipher_permutation_of_shifts
+	# for j in 0...cipher_shift_permutations.length do 
+	# 	puts "CSP [#{j}] = #{cipher_shift_permutations[j]}"
+	# end
+
+
+	head, *rest = cipher_shift_permutations
 	perm = head.product(*rest)
-
-	# puts "head: #{head}"
-	# puts "rest: #{rest}"
-	# puts "perm: #{perm} [#{perm.length}]"
-
-	# perm5 = perm[0...5]
-
-	# puts "perm5: #{perm5}"
-	# puts "perm5[0]: #{perm5[0]}"
-	# puts "perm5[0]key: #{key_from_string(perm5[0])}"
 
 	ct = cipher_text
 
-	puts "Decrypting and analysing #{perm.length}"
+	potential_keys = []
+
 	for i in 0...perm.length do 
 		puts "#{i}/#{perm.length}" if i % 100 == 0
 
-		# puts vigenere_decrypt cipher_text, "FIOAAA"
-		decrypted = vigenere_decrypt ct, key_from_string(perm[i])
+		key = key_from_string(perm[i])
+		decrypted = vigenere_decrypt ct, key
 
 		wdf = get_word_freq_length decrypted
 
-		puts "wfl: [#{key_from_string(perm[i])}: #{wdf}]" if wdf > 1
+		
+
+		if wdf > 1
+			puts "wfl: [#{key}: #{wdf}]" 
+
+			potential_keys << [key, wdf]
+		end
 	end
-	puts 'Decryption complete'
 
-
-
-	# puts cipher_permutation_of_shifts
-
-	# puts (cipher_permutation_of_shifts.length * cipher_permutation_of_shifts[0].length).to_s
-
-	# cipher_permutation_of_shifts[0].each do |n1| 
-	# 	cipher_permutation_of_shifts[1].each do |n2|
-	# 		cipher_permutation_of_shifts[2].each do |n3|
-	# 			cipher_permutation_of_shifts[3].each do |n4|
-	# 				cipher_permutation_of_shifts[4].each do |n5|
-	# 					cipher_permutation_of_shifts[5].each do |n6|
-	# 						puts "[#{(n1+65).chr},#{(n2+65).chr},#{(n3+65).chr},#{(n4+65).chr},#{(n5+65).chr},#{(n6+65).chr}]"
-	# 					end
-	# 				end
-	# 			end
-	# 		end
-	# 	end
-	# end
-	#[
-		#[
-			#[0] -> 'N'
-			#[1] -> frequency
-		#]
-		#[
-			#[0] -> 'X'
-		#]
-	#]
-
-	# [A, B]
-	# [C, D]
-	# [E, F]
-
-	#{ACE, ACF, ADE, ADF, BCE, BCF, BDE, BDF}
-
-	# test
-
-	# puts 'decrypted: '
-	puts get_word_freq_length vigenere_decrypt cipher_text, "FIOUJL"
+	puts "Potential keys: "
+	for j in 0...potential_keys.length do 
+		puts "#{potential_keys[j]}"
+	end
 end
 
 
