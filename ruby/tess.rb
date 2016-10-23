@@ -27,3 +27,4 @@ def init_tess word_length
 	$freq = tess27wordfrequency
 	$freq = $freq.select{|k,v| k.length > word_length}.sort_by{|k, v| v}.reverse
 end
+
