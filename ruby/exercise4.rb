@@ -47,7 +47,7 @@ def start
 	end
 
 	if potential_keys.length > 0
-		puts "Trying key [#{potential_keys[0]}]:"
+		puts "Trying key [#{potential_keys[0][0]}]:"
 		puts vigenere_decrypt ct, potential_keys[0][0]
 	end
 end

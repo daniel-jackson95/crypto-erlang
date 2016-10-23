@@ -33,7 +33,7 @@ def start
 		
 
 		if wdf > 1
-			puts "wfl: [#{key}: #{wdf}]" 
+			# puts "wfl: [#{key}: #{wdf}]" 
 			potential_keys << [key, wdf]
 		end
 	end

@@ -22,35 +22,8 @@ def get_word_freq_length plain_text
 	word_length
 end
 
-# def test_freq
-# 	freq = tess27wordfrequency
-
-# 	# for i in 0...freq.length do 
-# 	# 	puts freq[i][0]
-# 	# end
-
-# 	freq = freq.select{|k,v| k.length > 5}.sort_by{|k, v| v}.reverse
-
-# 	x3pt = exercise3_plaintext
-# 	puts "X3"
-
-# 	word_length = 0
-# 	freq.each do |k,v|
-# 		count = x3pt.scan(k).length
-
-
-# 		puts "#{k}: #{count}" if count > 0
-# 		word_length += (k.length * count) if count > 0
-# 	end
-
-# 	# puts 'Words: ' + x3pt.scan(/PUMPKIN/).length.to_s
-# 	puts "Word length: #{word_length}"
-
-# end
-
 $freq = []
 def init_tess word_length
 	$freq = tess27wordfrequency
 	$freq = $freq.select{|k,v| k.length > word_length}.sort_by{|k, v| v}.reverse
-	puts "Finished initializing freq"
 end
