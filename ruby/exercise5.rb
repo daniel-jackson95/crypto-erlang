@@ -7,41 +7,40 @@ def cipher_text
 	"TOOAGSSEDSCASNIHEROTERARRAGHNPPHETAVNEIIEFTSSHNGQWSWVPSMLSTEESGGMOBEONIPSTOAINIOEETNDEFTEHEHDARRXUNIOYEGSYHUITTCLOSBWEOTHRFYUHAEAALTSELOYCTHNOHEANNEDIEEDHCEOVNNSMEWFACHUHHEIESEDWHSDGAAEUAPTTTOOHFCEGRNSDEHOLEHAIRUESOEXPDLFOSHHAEGNEOHLRTOHAOOOWMSPEGDYLAHAADUOOAITWEDCDIHEERRHETNWEGTTASIADETIEELDNTULAASAELSRLBHHHIONETTSEEESDHEXOLERSOMTEFTVHDLTDTAMTRHTRAEATOTEGKTSOIPIAOSNWRENSAGUUCSSDRHTRZERTHEIRIMTRTHIKSFTNTORTWLENHNISDINTIAADLIEEORSTHIYLDTIEITYFTWEFNAHIHHIIORWDHGIMETHNDDMWFHNAEHERNRNROOOAERGANHNLCPNOEIIEERTIAVSSCOHSHEOIYEHOHFIHEPDIEWNWNTGTVFNPYSRPNPFEEVEAIHNSSEATTARATNATIRILWIEMRADOBHEOEKIOTACIDAPDEIHTDMWYSWUCDTGDEAAGVSCCDOHSPEFPERAEAQNNHHETOINERROLSOEHEAEIIADRKBSOOAORIITDTEDPORNEHSTTHSNHSEALNDNIORDSRIAOTNLWAYENITOSMNIASEASFAIHTHENPRRMEPEOTUETSRAREENETUOGIIROUNGREOREARSACTLNNRWOERISFRRMRTAMNLEIWOGNANOHEIWEBNNAHETLUIAPOMFNAOEELSHLNG"
 end
 
+def try_key_of_length columns 
+	ct = cipher_text
+	letters_per_col = ct.length / columns
+
+	#Setup transposition index positions
+	index_positions = []
+	columns.times {|i| index_positions[i] = i}
+
+	#Get the ciphertext in the correct columns
+	plain_text_cols = get_columns_from_index_positions ct, index_positions
+
+	#Plantext is constructed from the letters in order of each column
+	plain_text = get_plain_text_from_cols plain_text_cols
+
+	#Return the WFL
+	[get_word_freq_length(plain_text), plain_text]
+end
+
 def start
 	init_tess 8
 
 	ct = cipher_text
 
-	columns = 7 #[4, 5, 6, 7, 8]
-	letters_per_col = ct.length / columns
+	key_lengths = (4..8).to_a
+	key_wfl = Hash.new
 
-	index_positions = [] #[0, 1, 2, 3]
-	for i in 0...columns do 
-		index_positions[i] = i
+	for i in 0...key_lengths.length do
+		key_wfl[key_lengths[i].to_s] = try_key_of_length(key_lengths[i])
 	end
 
-	plain_text_cols = []
-	for i in 0...columns do 
-		index_pos = index_positions[i]
-		plain_text_cols[i] = ct[(index_pos*letters_per_col)...((index_pos+1)*letters_per_col)]
-		# puts "PTC[#{i}] = [#{plain_text_cols[i]}]"
-	end
+	key_wfl = key_wfl.sort_by{|k, v| v}.reverse
+	# puts key_wfl.to_s
 
-	plain_text_cols_orientated = []
-	plain_text = ""
-	for i in 0...letters_per_col do
-		# puts "LPC [#{i}]"
-		str = ""
-		for j in 0...columns do 
-			# puts "PTC [#{j}] = [#{plain_text_cols[j]}] L=[#{plain_text_cols[j].length}]"
-			str += plain_text_cols[j][i]
-		end
-		plain_text_cols_orientated[i] = str 
-		plain_text += str
-	end
-
-	puts "Plain text:\n[#{plain_text}]"
-
+	puts "Most probable plaintext using column length of [#{key_wfl[0][0]}] with a wfl[#{key_wfl[0][1][0]}]:\n#{key_wfl[0][1][1]}"
 end
 
 
@@ -94,7 +93,7 @@ def test
 end
 
 
-# start
-test
+start
+# test
 
 

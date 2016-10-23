@@ -41,14 +41,7 @@ def get_plain_text_from_cols plain_text_cols
 
 	total_letters = letters_per_col * columns
 
-	puts "LPC  = [#{letters_per_col}]"
-	puts "COLS = [#{columns}]"
-	puts "TLS  = [#{total_letters}]"
-
-	puts plain_text_cols.to_s
-
 	for i in 0...total_letters do 
-		puts "[#{i / columns}][#{i % columns}]"
 		plain_text += plain_text_cols[i % columns][i / columns]
 	end
 
