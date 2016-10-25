@@ -22,6 +22,14 @@ def key_from_string key_str
 	str
 end
 
+def get_subst_from_potential_word potential_word, cipher_word
+	subst = {}
+	for i in 0...cipher_word.length do 
+		subst[cipher_word[i]] = potential_word[i]
+	end
+	subst
+end
+
 def get_cipher_text_letter_frequency cipher_text, columns, most_frequent_letters
 	split_cols = split_string_into_cols cipher_text, columns
 	cipher_text_split_cols_freq = []
