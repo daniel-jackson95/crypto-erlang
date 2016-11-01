@@ -80,7 +80,8 @@ def check_for_words_which_arent_in_subst ct_split_words, new_subst
 		end
 	end
 
-	puts "Words which aren't in subst (#{words.to_s})"
+	# puts "Words which aren't in subst (#{words.to_s})"
+	words
 end
 
 def exercise7_start
@@ -127,6 +128,8 @@ def exercise7_start
 	ct_split.each do |ct_word|
 		word_length = ct_word.length
 
+		next if word_length < 7
+
 		ct_length[word_length] += 1
 		ct_split_words << ct_word
 		# ct_split_words[ct_word] += 1
@@ -155,7 +158,17 @@ def exercise7_start
 	# end					
 
 
-	potential_subst = find_subst_alphabet_in_tess("LISLRADFUQFIUV", subst, ct_split_words)#.merge(subst)
+
+	#Get initial words in ct_split_words which aren't in our cipher text
+	initial_words = check_for_words_which_arent_in_subst(ct_split_words, subst).sort_by{|k,v| k.length}.reverse
+	puts "Initial words: [#{initial_words.to_s}]"
+
+	#First word to try
+	initial_word = initial_words[0]
+
+
+
+	potential_subst = find_subst_alphabet_in_tess("LISLRADFUQFIUV", subst, {})#ct_split_words)#.merge(subst)
 	for i in 0...potential_subst.length do 
 		puts "Trying potential subst: [#{potential_subst[i].to_s}]"
 
@@ -168,7 +181,42 @@ def exercise7_start
 
 
 
-		check_for_words_which_arent_in_subst ct_split_words, new_subst
+		words = check_for_words_which_arent_in_subst ct_split_words, new_subst
+
+		words = words.sort_by{|k,v| k.length}.reverse
+		puts "WORRRRDS [#{words.to_s}]"
+
+		new_word_to_find = words[0]
+		puts "New word to find [#{new_word_to_find}]"
+
+		potential_subst_2 = find_subst_alphabet_in_tess(new_word_to_find, new_subst, {})
+
+		puts "PS2 [#{potential_subst_2}]"
+
+		for j in 0...potential_subst_2.length do 
+			puts "Trying [2] Potential subst2: [#{potential_subst_2[j].to_s}]"
+			new_subst_2 = potential_subst_2[j].merge(new_subst)
+
+			pt_2 = substitution_cipher $ct, new_subst_2
+			puts "Plaintext2:\n#{pt_2}"
+
+
+			words_3 = check_for_words_which_arent_in_subst ct_split_words, new_subst_2
+			words_3 = words_3.sort_by{|k,v| k.length}.reverse
+			new_word_3 = words_3[0]
+
+			ps3 = find_subst_alphabet_in_tess(new_word_3, new_subst_2, {})
+			for k in 0...ps3.length do 
+				new_subst_3 = ps3[k].merge(new_subst_2)
+				pt_3 = substitution_cipher $ct, new_subst_3
+				puts "Plaintext3:\n#{pt_3}"
+
+
+			end
+		end
+
+		# ct_split_words = ct_split_words.sort_by{|k,v| k.length}
+		# # ct_split_words.each {|k,v| puts "Length of [#{k}] x [#{v.length}]"} #Debug print
 	end
 	# new_pt = substitution_cipher ct, new_subst
 
