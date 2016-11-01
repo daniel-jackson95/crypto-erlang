@@ -6,10 +6,11 @@ require 'colorize'
 
 $ct
 def cipher_text
+	#{}"GYJ|ZYGDRPYDTY|ZY|DRDTTZXY|ZRYMOJYMGYTECJZYGMRYJ|ZYGLMMRCKHY|ZY|DXYMKAZYRZAZCFZXYT|ZYXCXYGMRYMKZYPMPZKJYECAJORZYN|DJYPCH|JY|DFZYBZZKYJ|ZYRZTOLJYCGYT|ZY|DXYBZZKYGRZZYJMYDAAZEJYJ|ZYMGGZRYIOTJYPDXZY|ZRYMGYBZCKHYJ|ZYPMKCZXYDLZATYNCGZYCJYNMOLXY|DFZYLCGJZXY|ZRYAMPELZJZLQYMOJYMGYTOBIZAJCMKYKMJYMKLQYJMY|ZRYERZTZKJYMEERZTTCFZYZPELMQZRYBOJYJMYDYN|MLZYNMRLXYN|MYTZZPZXYJMYXZTECTZY|ZRYBOJYKMYKMYT|ZYTDCXYBRZDJ|LZTTLQYCYAMOLXYKMJY|DFZYPDRRCZXY|CPYKMNY|ZYCTYTMYOKELZDTDKJYJMYPZYJ|DJYFZRQYKCH|JYT|ZYBZHDKYDKYDEEZDLCKHYLZJJZRYJMYALDRZYAMKAZDLCKHYGRMPY|CPY|ZRY|DRXT|CETYDKXYDTTORCKHY|CPYMGY|ZRYOKXQCKHYDGGZAJCMKYDKQYMKZYN|MY|DXYBZZKYCKYDYEMTCJCMKYJMYRZDXYBZJNZZKYJ|ZYLCKZTYNMOLXY|DFZYTZZKYJ|DJYDJYJ|ZYBDAUYMGY|ZRYHRZDJYLMFZYNDTYTMPZYPMKTJRMOTYGZDRYDLPMTJYDYXZTEZRDJCMKYDTYJMYTMPZYTZARZJYAMKJCKHZKACZTYN|CA|YNZRZYKMJYXCTALMTZXYBOJYDHDCKYT|ZYXCXYKMJYGCKCT|Y"
 	"SBD|UQN|FGRD|UD|GUD|OKKQ|DUIN|FGHRPG|FGK|NUAM|LRSFUIQD|HW|FGKIS|OHQQKFD|WVUMMKN|DAUSFVC|IQFH|FGKIS|WULKD|UQN|FGKIS|ESUMMKSD|LVRQP|UOHRF|FGKA|FH|EKUSIDHAKQKDD|FGKC|VIYKN|UVV|FGID|UWFKSQHHQ|IQ|AKAHSIKD|HW|PSKKQ|DRQQC|SHAUQFIL|FUVOHFGUCD|CHR|LUQ|DKK|U|PVKUA|HW|U|GIVV|EIFGIQ|U|WKE|AIVKD|H|WSHHA|YUVVKC|WSHA|GKSK|EGKQ|FID|WIQK|DUIN|AUSIUQ|UG|LUQ|CHR|DUIN|FKDD|UEUBK|FH|FGK|QKE|YUVRK|HW|FGID|VHLUVIFC|DH|FGK|FEH|WHSLKD|EKSK|UF|EHSB|GKSK|UD|KYKSCEGKSK|FGK|IQGKSKQF|EIVV|FH|KQZHC|UQN|FGK|LISLRADFUQFIUV|EIVV|UPUIQDF|KQZHCAKQF|AUSIUQD|EIVV|GUN|U|AKFGHN|HW|UDDIDFIQP|IFDKVW|OC|FUBIQP|WSHA|GKS|MHLBKF|UD|FGK|UWFKSQHHQ|EHSK|HQ|U|MIQF|OHFFVK|LHSBKN|EIFG|EGIFK|SUP|WSHA|EGILG|DGK|IQYIFKN|FKDD|FH|NSIQB|FKDDD|RQUDDIDFKN|MHEKS|HW|NSKUAIQP|GHEKYKS|OKIQP|KQHRPG|WHS|GKS|DROVIAUFIHQ|UF|MSKDKQF|DGK|NKLVIQKN|KXLKMF|FGK|AKSKDF|DIM|UQN|FGKQ|AUSIUQ|FHHB|U|MRVV|W"
 end
 
-$oo = 0
+$oo = -500
 
 def find_subst_alphabet_in_tess cipher_text_word, subst, ct_split_words
 	# CTW = 'TUVAPIDTF'
@@ -21,7 +22,7 @@ def find_subst_alphabet_in_tess cipher_text_word, subst, ct_split_words
 
 	
 	puts "CipherWord [#{cipher_text_word}]"
-	return subst if $oo >= 10
+	return subst if $oo >= 100
 
 	regex_matcher = ""
 	is_new_word = false
@@ -84,8 +85,41 @@ def check_for_words_which_arent_in_subst ct_split_words, new_subst
 	words
 end
 
+$pp = 0
+def find_subst_with_word_analysis ct_split_words, subst
+	$pp += 1
+
+	return subst if $pp == 15
+
+	words = check_for_words_which_arent_in_subst(ct_split_words, subst).sort_by{|k,v| k.length}.reverse
+	# word = words[0]
+	# puts "WORD [#{word}]"
+
+	return subst if words.length == 0
+
+	for w in 0...words.length do 
+		word = words[w]
+
+		potential_subst = find_subst_alphabet_in_tess(word, subst, {})
+		for i in 0...potential_subst.length do 
+			sb3 = subst.clone ###### ERM?
+			new_subst = potential_subst[i].merge(sb3)
+			pt = substitution_cipher $ct, new_subst
+
+			puts "new_subst.length [#{new_subst.length}]"
+
+			puts "$pp [#{$pp}]\n#{pt}"
+
+			return find_subst_with_word_analysis ct_split_words, new_subst
+		end
+	end
+
+	puts "End of FSWWA [#{subst}]"
+	subst
+end
+
 def exercise7_start
-	init_tess 7
+	init_tess 5
 
 	$ct = cipher_text
 
@@ -101,7 +135,15 @@ def exercise7_start
 	# plaintext = substitution_cipher ciphertext, sbust_reversed
 	# puts "Plaintext = [#{plaintext}]"
 
+
+	jgr2_subst = {"Y"=>" ", "Z"=>"E"}
+	jgr2_splitter = "Y"
+
 	subst = {"|"=>" ", "K"=>"E", "F"=>"T"}
+	splitter = "|"
+
+	# subst = jgr2_subst
+	# splitter = jgr2_splitter
 
 	# subst = {"L"=>"C", "I"=>"I", "S"=>"R", "R"=>"U", "A"=>"M", "D"=>"S", 
 	# 	"T"=>"T", "U"=>"A", "Q"=>"N", "V"=>"L", "|"=>" ", "K"=>"E", "F"=>"T",
@@ -122,13 +164,13 @@ def exercise7_start
 
 
 	### Split the cipher text by the space to find all the words
-	ct_split = $ct.split('|')
+	ct_split = $ct.split(splitter)
 	ct_length = Hash.new(0)
 	ct_split_words = []
 	ct_split.each do |ct_word|
 		word_length = ct_word.length
 
-		next if word_length < 7
+		next if word_length < 3
 
 		ct_length[word_length] += 1
 		ct_split_words << ct_word
@@ -158,16 +200,29 @@ def exercise7_start
 	# end					
 
 
+	new_subst = find_subst_with_word_analysis ct_split_words, subst
+	puts "new_subst: [#{new_subst.to_s}]"
+
 
 	#Get initial words in ct_split_words which aren't in our cipher text
 	initial_words = check_for_words_which_arent_in_subst(ct_split_words, subst).sort_by{|k,v| k.length}.reverse
-	puts "Initial words: [#{initial_words.to_s}]"
+	# puts "Initial words: [#{initial_words.to_s}]"
 
 	#First word to try
 	initial_word = initial_words[0]
 
+	#Get words <----
+	#Get word in words
+	#Get potential subst [find_subst_alphabet(word, subst)]
+		##For each potential subst
+		#Get new subst by merging
+		#Show Plaintext from new subst
+
+		#Get new words [check_for_words] <-----
 
 
+
+	return "STOP"
 	potential_subst = find_subst_alphabet_in_tess("LISLRADFUQFIUV", subst, {})#ct_split_words)#.merge(subst)
 	for i in 0...potential_subst.length do 
 		puts "Trying potential subst: [#{potential_subst[i].to_s}]"
