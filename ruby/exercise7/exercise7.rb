@@ -63,18 +63,24 @@ end
 
 def is_word_contained_in_subst word, subst
 	for i in 0...word.length do
-		return false if subst.key?word[i]
+		# puts "WORD[#{i}] [#{word[i]}]"
+		return true unless subst.key?word[i]
 	end
-	return true
+	return false
 end
 
 def check_for_words_which_arent_in_subst ct_split_words, new_subst
 	words = []
 	for i in 0...ct_split_words.length do 
-		if is_word_contained_in_subst ct_split_words[i], new_subst
-			puts "[#{ct_split_words[i]}] is not contained in [#{new_subst}]"
+		word = ct_split_words[i]
+		# puts "WORD [#{word}]"
+		if is_word_contained_in_subst word, new_subst
+			# puts "[#{ct_split_words[i]}] is not contained in [{new_subst}]"
+			words << word
 		end
 	end
+
+	puts "Words which aren't in subst (#{words.to_s})"
 end
 
 def exercise7_start

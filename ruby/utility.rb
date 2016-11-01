@@ -23,13 +23,27 @@ def key_from_string key_str
 end
 
 def get_subst_from_potential_word potential_word, cipher_word, existing_subst
-	# puts "GETS SUBST [#{potential_word}]"
+	puts "\nGETS SUBST [#{potential_word}]"
 	subst = existing_subst.clone
 	for i in 0...cipher_word.length do 
+		if subst.has_value?potential_word[i]
+			# puts "[#{subst}]"
+			# puts "[#{i}] Has [#{potential_word[i]}]"
+			if subst.key?cipher_word[i]
+				# puts "Has cipherword[#{i}] [#{cipher_word[i]}]"
+				if subst[cipher_word[i]] != potential_word[i]
+					puts "Doesn't match subst[#{cipher_word[i]}] => [#{potential_word[i]}]"
+					return {}
+				end
+			end
+
+			# puts "\n"
+		end
 		# puts "Checking if [#{cipher_word[i]} => #{potential_word[i]}] [#{subst}]"
-		return {} if subst.has_value?(potential_word[i]) and subst.key?cipher_word[i] and subst[cipher_word[i]] != potential_word[i]
+		# return {} if subst.has_value?(potential_word[i]) and subst.key?cipher_word[i] and subst[cipher_word[i]] != potential_word[i]
 		subst[cipher_word[i]] = potential_word[i]
 	end
+	puts "DOES MATCH!!!"
 	subst
 end
 
