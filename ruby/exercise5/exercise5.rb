@@ -1,22 +1,21 @@
-require_relative 'tess'
-require_relative 'transposition/transposition'
-require_relative 'utility'
+require_relative '../tess'
+require_relative '../transposition/transposition'
+require_relative '../utility'
 
 
-def cipher_text
+def exercise5_ciphertext
 	"TOOAGSSEDSCASNIHEROTERARRAGHNPPHETAVNEIIEFTSSHNGQWSWVPSMLSTEESGGMOBEONIPSTOAINIOEETNDEFTEHEHDARRXUNIOYEGSYHUITTCLOSBWEOTHRFYUHAEAALTSELOYCTHNOHEANNEDIEEDHCEOVNNSMEWFACHUHHEIESEDWHSDGAAEUAPTTTOOHFCEGRNSDEHOLEHAIRUESOEXPDLFOSHHAEGNEOHLRTOHAOOOWMSPEGDYLAHAADUOOAITWEDCDIHEERRHETNWEGTTASIADETIEELDNTULAASAELSRLBHHHIONETTSEEESDHEXOLERSOMTEFTVHDLTDTAMTRHTRAEATOTEGKTSOIPIAOSNWRENSAGUUCSSDRHTRZERTHEIRIMTRTHIKSFTNTORTWLENHNISDINTIAADLIEEORSTHIYLDTIEITYFTWEFNAHIHHIIORWDHGIMETHNDDMWFHNAEHERNRNROOOAERGANHNLCPNOEIIEERTIAVSSCOHSHEOIYEHOHFIHEPDIEWNWNTGTVFNPYSRPNPFEEVEAIHNSSEATTARATNATIRILWIEMRADOBHEOEKIOTACIDAPDEIHTDMWYSWUCDTGDEAAGVSCCDOHSPEFPERAEAQNNHHETOINERROLSOEHEAEIIADRKBSOOAORIITDTEDPORNEHSTTHSNHSEALNDNIORDSRIAOTNLWAYENITOSMNIASEASFAIHTHENPRRMEPEOTUETSRAREENETUOGIIROUNGREOREARSACTLNNRWOERISFRRMRTAMNLEIWOGNANOHEIWEBNNAHETLUIAPOMFNAOEELSHLNG"
 end
 
 def try_key_of_length columns 
-	ct = cipher_text
-	letters_per_col = ct.length / columns
+	letters_per_col = exercise5_ciphertext.length / columns
 
 	#Setup transposition index positions
 	index_positions = []
 	columns.times {|i| index_positions[i] = i}
 
 	#Get the ciphertext in the correct columns
-	plain_text_cols = get_columns_from_index_positions ct, index_positions
+	plain_text_cols = get_columns_from_index_positions exercise5_ciphertext, index_positions
 
 	#Plantext is constructed from the letters in order of each column
 	plain_text = get_plain_text_from_cols plain_text_cols
@@ -25,10 +24,8 @@ def try_key_of_length columns
 	[get_word_freq_length(plain_text), plain_text]
 end
 
-def start
+def exercise5_start
 	init_tess 8
-
-	ct = cipher_text
 
 	key_lengths = (4..8).to_a
 	key_wfl = Hash.new
@@ -38,7 +35,6 @@ def start
 	end
 
 	key_wfl = key_wfl.sort_by{|k, v| v}.reverse
-	# puts key_wfl.to_s
 
 	puts "Most probable plaintext using column length of [#{key_wfl[0][0]}] with a wfl[#{key_wfl[0][1][0]}]:\n#{key_wfl[0][1][1]}"
 end
@@ -91,9 +87,4 @@ def test
 	#Also print the WFL
 	puts get_word_freq_length plain_text
 end
-
-
-start
-# test
-
 

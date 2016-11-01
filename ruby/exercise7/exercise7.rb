@@ -1,18 +1,70 @@
-require_relative 'tess'
-require_relative 'utility'
-require_relative 'substitution/substitution'
+require_relative '../tess'
+require_relative '../utility'
+require_relative '../substitution/substitution'
 require 'colorize'
 
 
-
+$ct
 def cipher_text
 	"SBD|UQN|FGRD|UD|GUD|OKKQ|DUIN|FGHRPG|FGK|NUAM|LRSFUIQD|HW|FGKIS|OHQQKFD|WVUMMKN|DAUSFVC|IQFH|FGKIS|WULKD|UQN|FGKIS|ESUMMKSD|LVRQP|UOHRF|FGKA|FH|EKUSIDHAKQKDD|FGKC|VIYKN|UVV|FGID|UWFKSQHHQ|IQ|AKAHSIKD|HW|PSKKQ|DRQQC|SHAUQFIL|FUVOHFGUCD|CHR|LUQ|DKK|U|PVKUA|HW|U|GIVV|EIFGIQ|U|WKE|AIVKD|H|WSHHA|YUVVKC|WSHA|GKSK|EGKQ|FID|WIQK|DUIN|AUSIUQ|UG|LUQ|CHR|DUIN|FKDD|UEUBK|FH|FGK|QKE|YUVRK|HW|FGID|VHLUVIFC|DH|FGK|FEH|WHSLKD|EKSK|UF|EHSB|GKSK|UD|KYKSCEGKSK|FGK|IQGKSKQF|EIVV|FH|KQZHC|UQN|FGK|LISLRADFUQFIUV|EIVV|UPUIQDF|KQZHCAKQF|AUSIUQD|EIVV|GUN|U|AKFGHN|HW|UDDIDFIQP|IFDKVW|OC|FUBIQP|WSHA|GKS|MHLBKF|UD|FGK|UWFKSQHHQ|EHSK|HQ|U|MIQF|OHFFVK|LHSBKN|EIFG|EGIFK|SUP|WSHA|EGILG|DGK|IQYIFKN|FKDD|FH|NSIQB|FKDDD|RQUDDIDFKN|MHEKS|HW|NSKUAIQP|GHEKYKS|OKIQP|KQHRPG|WHS|GKS|DROVIAUFIHQ|UF|MSKDKQF|DGK|NKLVIQKN|KXLKMF|FGK|AKSKDF|DIM|UQN|FGKQ|AUSIUQ|FHHB|U|MRVV|W"
 end
 
-def start
+$oo = 0
+
+def find_subst_alphabet_in_tess cipher_text_word, subst, ct_split_words
+	# CTW = 'TUVAPIDTF'
+	# Subst = {"T"="E"}
+
+	$oo += 1
+
+
+	
+	puts "oo [#{$oo}]"
+	puts "CipherWord [#{cipher_text_word}]"
+	return subst if $oo >= 10
+
+	regex_matcher = ""
+	is_new_word = false
+
+	for i in 0...cipher_text_word.length do 
+		word = cipher_text_word[i]
+
+		if subst.key?word 
+			regex_matcher += "#{subst[word]}"
+		else
+			regex_matcher += "[A-Z]"
+			is_new_word = true
+		end
+	end
+
+	return unless is_new_word
+
+	tess_matching_words = get_matching_words_from_tess regex_matcher, cipher_text_word.length
+
+	puts "Matching words:\n[#{tess_matching_words}]"
+
+	potential_subst = []
+	for i in 0...tess_matching_words.length do 
+		word = tess_matching_words[i]
+
+		new_subst = get_subst_from_potential_word word, cipher_text_word
+		puts "New subst [#{new_subst}]"
+		#TRY word in the subst
+		# find_subst_alphabet_in_tess word, subst
+		#find a word which 
+
+		potential_subst << new_subst
+
+		return subst if $oo >= 5000
+	end
+
+	potential_subst	
+end
+
+def exercise7_start
 	init_tess 7
 
-	ct = cipher_text
+	$ct = cipher_text
 
 	# test_str = "ABBOA"
 	# subst = {'A'=>'E', 'B'=>'O', 'O'=>'P'}
@@ -26,7 +78,7 @@ def start
 	# plaintext = substitution_cipher ciphertext, sbust_reversed
 	# puts "Plaintext = [#{plaintext}]"
 
-	subst = {"|"=>" ", "K"=>"E"}
+	subst = {"|"=>" ", "K"=>"E", "F"=>"T"}
 
 	# subst = {"L"=>"C", "I"=>"I", "S"=>"R", "R"=>"U", "A"=>"M", "D"=>"S", 
 	# 	"T"=>"T", "U"=>"A", "Q"=>"N", "V"=>"L", "|"=>" ", "K"=>"E", "F"=>"T",
@@ -47,39 +99,65 @@ def start
 
 
 	### Split the cipher text by the space to 
-	ct_split = ct.split('|')
+	ct_split = $ct.split('|')
 	ct_length = Hash.new(0)
-	ct_split_words = {}
+	ct_split_words = []
 	ct_split.each do |ct_word|
 		word_length = ct_word.length
 
 		ct_length[word_length] += 1
-		# if ct_length[word_length] == 1
-		# 	ct_split_words[word_length] = []
-		# end
-		ct_split_words[ct_word] = 0 unless ct_split_words.key? ct_word
-		ct_split_words[ct_word] += 1
+		ct_split_words << ct_word
 		# ct_split_words[ct_word] += 1
 	end	
-	ct_split_words = ct_split_words.sort_by{|k,v| k.length}
-	# ct_split_words.each {|k,v| puts "Length of [#{k}] x [#{v.length}]"} #Debug print
+	# puts "CT SPLIT WORDS #{ct_split_words}"
+	# ct_split_words = ct_split_words.sort_by{|k,v| k.length}
+	# # ct_split_words.each {|k,v| puts "Length of [#{k}] x [#{v.length}]"} #Debug print
 
 	ct_length = ct_length.sort_by{|k,v| k}
 	ct_length.each do |k,v|
-		puts "Length of [#{k}] x [#{v}]"
+		# puts "Length of [#{k}] x [#{v}]"
 	end
 
-	max_length = ct_split_words.max_by{|k,v| k.length}[0].length
-	puts "MaxLength [#{max_length}]"
+	puts "CTSPLIT [#{ct_split_words.length}]"
+
+	# for i in 0...10 do 
+	# 	break
+	# 	max_length = ct_split_words.max_by(&:length)
+	# 	puts "MaxLength Word {#{max_length} - #{max_length.length}}"
+
+	# 	new_ct_split_words = ct_split_words.reject{|e| e==max_length}
+	# 	puts "CTSPLIT [#{new_ct_split_words.length}]"
+	# 	puts "subst [#{subst}]"
+	# 	# new_subst = find_subst_alphabet_in_tess max_length, subst, new_ct_split_words
+	# 	puts "subst [#{subst}]"
+	# end					
 
 
-	word = ct_split_words.select{|k,v| k.length == max_length}
-	puts "Word [#{word}]"
+	potential_subst = find_subst_alphabet_in_tess("LISLRADFUQFIUV", subst, ct_split_words)#.merge(subst)
+	for i in 0...potential_subst.length do 
+		puts "Trying potential subst: [#{potential_subst[i].to_s}]"
 
-	ct_split_words.delete(word[0])
-	puts "Delted word"
+		new_subst = potential_subst[i].merge(subst)
 
-	puts ct_split_words.to_a.to_s
+		pt = substitution_cipher $ct, new_subst
+		puts "Plaintext:\n#{pt}"
+	end
+	# new_pt = substitution_cipher ct, new_subst
+
+
+
+
+	# max_length = ct_split_words.max_by{|k,v| k.length}[0].length
+	# puts "MaxLength [#{max_length}]"
+
+
+	# word = ct_split_words.select{|k,v| k.length == max_length}
+	# puts "Word [#{word}]"
+
+	# ct_split_words.delete(word[0])
+	# puts "Delted word"
+
+	# puts ct_split_words.to_a.to_s
 
 	# word_length_max = ct_length.max[0]
 	# puts word_length_max
@@ -173,7 +251,3 @@ def start
 
 	# puts plain_text
 end
-
-
-start
-

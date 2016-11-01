@@ -11,7 +11,7 @@ charv(C) ->
 	Letter = hd(C),
 	io:fwrite("The letter character is: ["),
 	io:fwrite(integer_to_list(Letter)),
-	io:fwrite("]"), 
+	io:fwrite("]"), 	
 	if
 		Letter == 97 ->
 			a;

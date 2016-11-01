@@ -1,0 +1,57 @@
+-module(exercise1).
+-export([start/0]).
+
+cipher_text()->
+	"GWHKOGWADCGGWPZSHCHVWBYCTFSHIFBWBUHCHVSJWQOFOUSOBUSZGKWTSTSZHOZACGHOGWTGVSVORPSSBVCIBRSRIDHVOHVWZZZWYSOGQCFBSRHVWBUPMHVCGSHCVSFGIDSFTWBSQZSFWQGWBBCQSBHZMOGHVSGZWUVHVORPSSBWBTZWQHSRWHKOGGCASKVOHIBTCFHIBOHSHVOHGVSVORSBQCIBHSFSRHVSGCBGOBRBCHHVSTOHVSFKVCRSGDWHSVWGBOFFCKBSGGKOGTOFZSGGGHOFQVSROBRWFCBSRHVOBHVSMOBRVORHCHVSTIZZHVSUWTHCTQVOFWHMOGGVSOUOWBHVCIUVHCTVSFRIGHMPCCHGGVSOZACGHDWHWSRHVCGSVOPWZWASBHGTCFHVSEIWNNWBUHCKVWQVHVSMVORPSSBGIPXSQHSROBRTSZHVCKVCDSZSGGZWTSKOGTCFHVSWFCKBSFOVGVSGOWRGHWZZGWUVWBUWBDWHMCTVSFGSZTHVSMRWRBHYBCKHVOHWKCFSHVCGSCJSFHVSFCIUVSGHDOFHCTHVSFCORHCGOJSHVSGSDFSHHMCBSGVSPCIUVHTCFASBCHVSMRWRBCHYBCKWHOBRHVSMRWRBHHVWBYHVOHVSQVCGSHVSQCZCIFCAMDFSHHMTFCQYBCVCKQCIZRHVSMWTHVSMVORYBCKBDSFVODGHVSMKCIZRBCHVOJSQOFSRTCFHVSMRCBHQOFSAIQVTCFVWADCCFHVWBUHVSBGVSUFWSJSRTCFHVSPSZCJSRAOBKVCGSQCBJSBHWCBOZGHOBROFRCTXIRUSASBHVORQOIGSRVSF".
+
+shift_letter(Letter, Key)->
+	LetterValue = hd(Letter),
+	KeyValue = Key,
+
+	NewValue = LetterValue + KeyValue,
+
+	if
+		NewValue > 90 ->
+			ShiftedValue = NewValue - 26;
+		NewValue < 65 ->
+			ShiftedValue = NewValue + 26;
+		true ->
+			ShiftedValue = NewValue		
+	end,
+
+	[ShiftedValue].
+
+caesar_decrypt([Head|[]], Key)->
+	shift_letter([Head], Key);
+caesar_decrypt([Head|Tail], Key)->
+	shift_letter([Head], Key) ++ caesar_decrypt(Tail, Key).
+
+debug_print([Head|[]])->
+	io:fwrite("{"++Head++"}\n");
+debug_print([Head|Tail])->
+	io:fwrite("["++Head++"]\n"),
+	debug_print(Tail).
+	
+% A = 0
+% Z = 25
+start()->
+	CipherText = cipher_text(),
+	Key = 12,
+
+	Split = string:tokens("THE|TESS|OF|THE|DUBERS", "|"),
+	io:fwrite("Split ["++Split++"]x\n"),
+	debug_print(Split),
+
+	% THE = 4
+	% TO = 3
+	% TOKENS = 2
+	DummyCipher = "THETOTOKENSTHEKOOOTOKENSTHELOPTHE"
+	Words = ["TO", "THE", "TOKENS"],
+
+	% Letter = hd(C),
+	% io:fwrite("The letter character ["++C++"] has ascii value of ["),
+	% io:fwrite(integer_to_list(Letter)),
+	% io:fwrite("]\n"),
+
+
+	io:fwrite("Caesar Decrypt:\n" ++ caesar_decrypt(CipherText, Key) ++ "\n").

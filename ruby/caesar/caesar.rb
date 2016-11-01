@@ -1,7 +1,7 @@
 
 def caesar_cipher text, key, is_encryption
 	cipher_text = ""
-	key_value = key.ord - 65
+	key_value = key
 
 	for i in 0...text.length do 
 		text_value = text[i].ord - 65
