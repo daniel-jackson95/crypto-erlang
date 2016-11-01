@@ -22,9 +22,12 @@ def key_from_string key_str
 	str
 end
 
-def get_subst_from_potential_word potential_word, cipher_word
-	subst = {}
+def get_subst_from_potential_word potential_word, cipher_word, existing_subst
+	# puts "GETS SUBST [#{potential_word}]"
+	subst = existing_subst.clone
 	for i in 0...cipher_word.length do 
+		# puts "Checking if [#{cipher_word[i]} => #{potential_word[i]}] [#{subst}]"
+		return {} if subst.has_value?(potential_word[i]) and subst.key?cipher_word[i] and subst[cipher_word[i]] != potential_word[i]
 		subst[cipher_word[i]] = potential_word[i]
 	end
 	subst

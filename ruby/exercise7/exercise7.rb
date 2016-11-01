@@ -16,10 +16,10 @@ def find_subst_alphabet_in_tess cipher_text_word, subst, ct_split_words
 	# Subst = {"T"="E"}
 
 	$oo += 1
+	puts "DEBUG COUNTER [#{$oo}]"
 
 
 	
-	puts "oo [#{$oo}]"
 	puts "CipherWord [#{cipher_text_word}]"
 	return subst if $oo >= 10
 
@@ -47,18 +47,34 @@ def find_subst_alphabet_in_tess cipher_text_word, subst, ct_split_words
 	for i in 0...tess_matching_words.length do 
 		word = tess_matching_words[i]
 
-		new_subst = get_subst_from_potential_word word, cipher_text_word
-		puts "New subst [#{new_subst}]"
+		new_subst = get_subst_from_potential_word word, cipher_text_word, subst
+		puts "New subst [#{word}] [#{new_subst}]"
 		#TRY word in the subst
 		# find_subst_alphabet_in_tess word, subst
-		#find a word which 
+		#find a word which
 
-		potential_subst << new_subst
+		potential_subst << new_subst unless new_subst == {}
 
 		return subst if $oo >= 5000
 	end
 
 	potential_subst	
+end
+
+def is_word_contained_in_subst word, subst
+	for i in 0...word.length do
+		return false if subst.key?word[i]
+	end
+	return true
+end
+
+def check_for_words_which_arent_in_subst ct_split_words, new_subst
+	words = []
+	for i in 0...ct_split_words.length do 
+		if is_word_contained_in_subst ct_split_words[i], new_subst
+			puts "[#{ct_split_words[i]}] is not contained in [#{new_subst}]"
+		end
+	end
 end
 
 def exercise7_start
@@ -98,7 +114,7 @@ def exercise7_start
 
 
 
-	### Split the cipher text by the space to 
+	### Split the cipher text by the space to find all the words
 	ct_split = $ct.split('|')
 	ct_length = Hash.new(0)
 	ct_split_words = []
@@ -141,6 +157,12 @@ def exercise7_start
 
 		pt = substitution_cipher $ct, new_subst
 		puts "Plaintext:\n#{pt}"
+
+
+
+
+
+		check_for_words_which_arent_in_subst ct_split_words, new_subst
 	end
 	# new_pt = substitution_cipher ct, new_subst
 
