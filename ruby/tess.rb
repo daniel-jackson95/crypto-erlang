@@ -69,10 +69,76 @@ def get_word_freq_length plain_text
 	word_length
 end
 
+## For exercise 7
+def count_non_words_in_plaintext plaintext
+	tess27wf = tess27wordfrequency
+	plaintext_uncolorized = plaintext.uncolorize
+
+	pt_split = plaintext_uncolorized.split($tess_splitter)
+
+	non_words = 0
+	for i in 0...pt_split.length do 
+		word = pt_split[i]
+
+		non_words += 1 unless tess27wf.key?word
+	end
+	non_words
+end
+
+## For exercise 7
+def get_whole_words_in_pt plaintext, substitution_alphabet
+	split_pt = plaintext.uncolorize.split($tess_splitter)
+	words = []
+
+	puts "subst [#{substitution_alphabet}]"
+	for i in 0...split_pt.length do
+		word = split_pt[i]
+		# puts "Word [#{i}] [#{word}]"
+
+		for j in 0...word.length do 
+			letter = word[j]
+
+			# puts "Letter [#{j}] [#{letter}]"
+			unless substitution_alphabet.key?letter
+				# puts "#{substitution_alphabet}"
+				# puts "Substitution alphabet doesnt have [#{letter}]"
+				break
+			end
+
+			words << word if j == word.length-1
+		end
+	end
+
+	words
+end
+
+## For exercise 7
+def count_non_words_in_array array_of_words_cipher, subst
+	tess27wf = tess27wordfrequency
+	non_words = 0
+	for i in 0...array_of_words_cipher.length do 
+		word = decrypt_word(array_of_words_cipher[i], subst)
+
+		non_words += 1 unless tess27wf.key?word
+
+		puts "Non word [#{word}]" unless tess27wf.key?word
+	end
+	non_words
+end
+
+def decrypt_word cipherword, subst
+	word = ""
+	for i in 0...cipherword.length do 
+		word += subst[cipherword[i]]
+	end
+	word
+end
+
 $freq = []
+$tess_splitter = 'xxxx'
 def init_tess word_length
 	$freq = tess27wordfrequency
-	$freq = $freq.select{|k,v| k.length > word_length}.sort_by{|k, v| v}.reverse
+	$freq = $freq.select{|k,v| k.length >= word_length}.sort_by{|k, v| v}.reverse
 end
 
 if ARGV[0] == "words"
