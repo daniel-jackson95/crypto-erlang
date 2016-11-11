@@ -13,5 +13,10 @@ that appear in tess27 and
 assume that the most words 
 that appear will be the 
 correct plaintext.
-I used my program to solve
-this /src/exercise3.rb
+I wrote a program to solve
+this:
+/src/exercise3.rb
+Also uses:
+/tools/tess.rb
+/tools/utitlity.rb
+/ciphers/vigenere.rb

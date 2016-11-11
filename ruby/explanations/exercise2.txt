@@ -2,5 +2,7 @@ ISOMENESSTHEYLIVEDALLTHISAFTER
 
 I wrote a program that takes 
 a ciphertext and a key that 
-produces the plaintext - 
+produces the plaintext:
 /src/exercise2.rb
+Also uses:
+/ciphers/vigenere.rb

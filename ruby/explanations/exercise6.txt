@@ -1,0 +1,18 @@
+EMOTERVIEWMOREOVERWHENTWOPEOPL
+
+My solution finds all 
+permutations of the column
+ordering, so I end up with
+6! keys = 720.
+I then decrypt the ciphertext
+with each key and calculate
+the word frequency score.
+At the end I pick the
+
+I wrote a program to solve
+this:
+/src/exercise6.rb
+Also uses:
+/tools/tess.rb
+/tools/utility.rb
+/ciphers/transposition.rb

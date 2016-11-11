@@ -5,6 +5,21 @@ starting from 4 up to 8.
 I split the ciphertext into 
 equals columns as there are
 keys, so 4 columns of 210
-letters for a key of 4
-
+letters for a key of 4. I
+then take the first letter 
+of each successive column 
+and add to a ‘plaintext’ 
+variable. After the plaintext
+is built I count the word
+frequency length and repeat 
+for all other key lengths.
+At the end I pick the key 
+which has the most frequent
+words in it as my plaintext
+I wrote a program to solve
+this:
 /src/exercise5.rb
+Also uses:
+/tools/tess.rb
+/tools/utility.rb
+/ciphers/transposition.rb

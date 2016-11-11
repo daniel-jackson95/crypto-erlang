@@ -8,5 +8,10 @@ I then assumed that E would be in the top 3 characters
 this means that there are 3^8 keys to try 
 I then found the plaintext which had the most words that are in tess27
 
+I wrote a program to solve
+this:
 /src/exercise4.rb
-
+Also uses:
+/tools/tess.rb
+/tools/utility.rb
+/ciphers/vigenere.rb

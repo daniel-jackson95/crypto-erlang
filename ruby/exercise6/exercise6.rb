@@ -43,5 +43,7 @@ def exercise6_start
 	# end
 
 	# puts "Trying the most probably index ordering:"
-	puts get_plain_text_from_cols(get_columns_from_index_positions(exercise6_ciphertext, column_orders[0][0]))
+	plaintext = get_plain_text_from_cols(get_columns_from_index_positions(exercise6_ciphertext, column_orders[0][0]))
+	puts "Exercise6 plaintext:"
+	puts plaintext[0...30]
 end

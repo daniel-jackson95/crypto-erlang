@@ -35,18 +35,25 @@ def exercise3_start
 	for i in 0...perm.length do 
 		print "#{i}/#{perm.length}\r" if i % 50 == 0
 
+		#Get the key from the permutation of possible keys
 		key = key_from_string(perm[i])
+		#Find the potential plaintext
 		decrypted = vigenere_decrypt ct, key
 
+		#Find the word frequency length (if the word appears in tess it returns it's length - a way of measuring word scores)
 		wfl = get_word_freq_length decrypted
 
+		#If the word frequency length is greater than 0 (it's a word in tess27) then add the key to a potential key array
 		potential_keys << [key, wfl] if wfl > 0
 	end
 
+	#Sort the potential keys by the 'wfl', so higher values appear first
 	potential_keys = potential_keys.sort_by{|k,v| v}.reverse
 
+	#Get the plaintext from the first potential key 
 	plaintext = vigenere_decrypt exercise3_ciphertext, potential_keys[0][0]
 
+	#Print out the first 30 characters of the plaintext 
 	puts "Exercise3 plaintext:"
 	puts plaintext[0...30]
 end
