@@ -27,7 +27,7 @@ $found_word = false
 $ct
 $minimum_substitution_alphabet_length
 
-$DEBUG_OUTPUT = true
+$DEBUG_OUTPUT = false
 
 def exercise7b_start
 	#Initialise Tess system
@@ -68,7 +68,7 @@ def exercise7b_start
 	final_substitution_alphabet = find_subst_with_word_analysis ct_split_words, initial_substitution_alphabet
 
 	#Get the plaintext from the substitution alphabet - assuming we have found one and the program is not indefinitely running...
-	plaintext = substitution_cipher cipher_text, final_substitution_alphabet
+	plaintext = substitution_cipher cipher_text, final_substitution_alphabet, false
 
 	#Print the output
 	puts "Exercise7 plaintext:"
@@ -96,7 +96,7 @@ def find_subst_with_word_analysis split_words, substitution_alphabet
 			new_substitution_alphabet = potential_substitution_alphabets[j].merge(substitution_alphabet)
 			# puts "new_substitution_alphabet = [#{new_substitution_alphabet}]"
 
-			plaintext = substitution_cipher $ct, new_substitution_alphabet
+			plaintext = substitution_cipher $ct, new_substitution_alphabet, true
 			puts "plaintext:\n#{plaintext}" if $DEBUG_OUTPUT
 
 			###ToDo:
