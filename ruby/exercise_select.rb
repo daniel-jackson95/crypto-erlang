@@ -9,6 +9,14 @@ require_relative 'exercise7/exercise7b.rb'
 
 def process number
 	$exercises[number].call if number > 0 and number < 8
+
+	if number == 10 
+		puts ""
+		7.times do |i|
+			$exercises[i + 1].call
+			puts ""
+		end
+	end
 end
 
 

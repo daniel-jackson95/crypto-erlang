@@ -1,4 +1,3 @@
-require_relative '../tess'
 require_relative '../vigenere/vigenere'
 
 ## Exercise 2 ciphertext
@@ -14,5 +13,6 @@ end
 ## Start the vigenere decryption process
 def exercise2_start
 	#Output the plaintext from using the ciphertext and key
+	puts "Exercise2 plaintext:"
 	puts vigenere_decrypt exercise2_ciphertext, exercise2_key
 end

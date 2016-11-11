@@ -87,4 +87,3 @@ def test
 	#Also print the WFL
 	puts get_word_freq_length plain_text
 end
-

@@ -1,0 +1,11 @@
+SITWASIMPOSSIBLETOTHINKOFRETUR
+
+I loop over all 26 possible 
+keys and tally up the length
+of the words found.
+I then pick the key that has
+the highest ‘word frequency 
+length’ and assume that is 
+the plaintext
+I wrote a program to solve
+this - /src/exercise1.rb

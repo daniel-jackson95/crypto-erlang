@@ -45,16 +45,3 @@ def exercise6_start
 	# puts "Trying the most probably index ordering:"
 	puts get_plain_text_from_cols(get_columns_from_index_positions(exercise6_ciphertext, column_orders[0][0]))
 end
-
-
-def test
-	init_tess 8
-
-	#The plaintext is written row-wise across 6 columns
-	#The ciphertext is formed by reading out successive columns in an artbitrary order
-	# (Which you must figure out to decipher the message)
-	# Hint: look for common pairs of letters, such as 'th'
-
-
-end
-

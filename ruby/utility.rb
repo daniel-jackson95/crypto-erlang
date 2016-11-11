@@ -37,6 +37,7 @@ def get_subst_from_potential_word potential_word, cipher_word, existing_subst
 	subst
 end
 
+# This gets the most common letter frequency for a set amount of columns in a ciphertext - EX3
 def get_cipher_text_letter_frequency cipher_text, columns, most_frequent_letters
 	split_cols = split_string_into_cols cipher_text, columns
 	cipher_text_split_cols_freq = []
@@ -68,6 +69,7 @@ def get_key_permutations split_text_letter_freq, letter_frequencies
 	cipher_shift_permutations
 end
 
+# This finds the most frequent letters in a string - EX3
 def split_string_by_letter_frequency str, cols
 	letter_freqs = str.chars.group_by(&:chr).map { |k, v| [k, v.size] }.sort_by {|k,v| v}.reverse
 
@@ -77,6 +79,8 @@ def split_string_by_letter_frequency str, cols
 	end
 	freqs
 end
+
+# Splits a string into a set of columns - EX3
 def split_string_into_cols str, cols
 	str_cols = Array.new(cols)
 

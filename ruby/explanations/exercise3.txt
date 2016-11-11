@@ -1,0 +1,17 @@
+SPUMPKINLIKEMOONAROSEONTHEOTHE
+
+I assumed that E would be in
+the top 3 letters for each 
+column but I was wrong, so I
+also included T as the top 
+letter. This made a
+permutation of 4^6 potential
+keys, 4096 keys.
+I then get the plaintext and
+calculate the amount of words
+that appear in tess27 and
+assume that the most words 
+that appear will be the 
+correct plaintext.
+I used my program to solve
+this /src/exercise3.rb

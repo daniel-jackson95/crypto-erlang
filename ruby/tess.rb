@@ -60,6 +60,7 @@ def get_words_which_match_with_alphabet
 	return []
 end
 
+## EX1
 def get_word_freq_length plain_text
 	word_length = 0
 	$freq.each do |k,v|

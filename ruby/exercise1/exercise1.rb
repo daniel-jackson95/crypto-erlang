@@ -1,6 +1,6 @@
-require_relative '../tess'
 require_relative '../caesar/caesar'
 require_relative '../utility'
+require_relative '../tess'
 
 
 ## This is the ciphertext for exercise 1
@@ -34,5 +34,6 @@ def exercise1_start
 	potential_plain_text = caesar_decrypt exercise1_ciphertext, potential_keys[0][0]
 
 	#Print out the most likely plaintext
-	puts potential_plain_text
+	puts "Exercise1 plaintext:"
+	puts potential_plain_text[0...30]
 end

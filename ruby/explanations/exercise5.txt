@@ -1,0 +1,10 @@
+THOSEPOORWORDSOFMINEMAYSPRINGU
+
+I tried all the key lengths 
+starting from 4 up to 8.
+I split the ciphertext into 
+equals columns as there are
+keys, so 4 columns of 210
+letters for a key of 4
+
+/src/exercise5.rb

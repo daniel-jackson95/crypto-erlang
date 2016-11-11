@@ -1,18 +1,19 @@
-
 def caesar_cipher text, key, is_encryption
-	cipher_text = ""
+	#Setup the new cipher/plain text
+	final_text = ""
 	key_value = key
 
 	for i in 0...text.length do 
-		text_value = text[i].ord - 65
-		cipher_value = text_value + key_value if is_encryption
-		cipher_value = text_value - key_value if !is_encryption
-		cipher_value += 26 if cipher_value < 0
-		cipher_value -= 26 if cipher_value > 25
-		cipher_text += (cipher_value+65).chr
+		text_value = text[i].ord - 65 #Get the letter ASCII value minus 65 to convert to [0-25]
+		new_value = text_value + key_value if is_encryption #If it's encryption add the value
+		new_value = text_value - key_value if !is_encryption #If it's decryption minus the value
+		new_value += 26 if new_value < 0 #If it was decryption we need to add a 26 if it's less
+		new_value -= 26 if new_value > 25 #If it was encryption we might need to minus 26 if it's more
+		final_text += (new_value+65).chr #Add the new value to the cipher/plain text by adding 'A' back to the [0-25] value
 	end
 
-	cipher_text
+	#Return the cipher/plain text
+	final_text
 end
 def caesar_encrypt plain_text, key
 	caesar_cipher plain_text, key, true
