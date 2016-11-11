@@ -1,2 +1,46 @@
 HERSELF|HAD|FELT|TWO|OR|THREE|
 
+First I do a letter frequency
+analysis on the ciphertext in
+which I make an assumption 
+that the first common letter
+is a space and that the 
+second common letter is an E.
+I then split the tess27 
+text into words by splitting
+with the assumed space
+letter.
+I then try to find words
+which match a regex of the
+assumed E character.
+I then try all the
+combinations of words which
+can match the regex.
+If a word fits, I add the
+matching substitution
+alphabet to the alphabet of
+the function that called it
+before. This may seem
+confusing but at any time
+there may be lots of
+substitution alphabets in
+the program which be branched
+off of using different words
+at different places.
+I have some checks that say
+if there is a complete 
+substitution alphabet of 
+length X and all the words
+in the corresponding 
+plaintext are words from
+the tess27 split than it
+should be the right 
+plaintext.
+
+I wrote a program to solve
+this:
+/src/exercise7.rb
+Also uses:
+/tools/tess.rb
+/tools/utility.rb
+/ciphers/substitution.rb

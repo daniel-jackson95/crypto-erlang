@@ -2,9 +2,8 @@ require_relative '../tess'
 require_relative '../utility'
 require_relative '../substitution/substitution'
 require 'colorize'
-
-$which_ct = 2
-$ct
+ 
+$which_ct = 4
 def cipher_text
 	#{}"GYJ|ZYGDRPYDTY|ZY|DRDTTZXY|ZRYMOJYMGYTECJZYGMRYJ|ZYGLMMRCKHY|ZY|DXYMKAZYRZAZCFZXYT|ZYXCXYGMRYMKZYPMPZKJYECAJORZYN|DJYPCH|JY|DFZYBZZKYJ|ZYRZTOLJYCGYT|ZY|DXYBZZKYGRZZYJMYDAAZEJYJ|ZYMGGZRYIOTJYPDXZY|ZRYMGYBZCKHYJ|ZYPMKCZXYDLZATYNCGZYCJYNMOLXY|DFZYLCGJZXY|ZRYAMPELZJZLQYMOJYMGYTOBIZAJCMKYKMJYMKLQYJMY|ZRYERZTZKJYMEERZTTCFZYZPELMQZRYBOJYJMYDYN|MLZYNMRLXYN|MYTZZPZXYJMYXZTECTZY|ZRYBOJYKMYKMYT|ZYTDCXYBRZDJ|LZTTLQYCYAMOLXYKMJY|DFZYPDRRCZXY|CPYKMNY|ZYCTYTMYOKELZDTDKJYJMYPZYJ|DJYFZRQYKCH|JYT|ZYBZHDKYDKYDEEZDLCKHYLZJJZRYJMYALDRZYAMKAZDLCKHYGRMPY|CPY|ZRY|DRXT|CETYDKXYDTTORCKHY|CPYMGY|ZRYOKXQCKHYDGGZAJCMKYDKQYMKZYN|MY|DXYBZZKYCKYDYEMTCJCMKYJMYRZDXYBZJNZZKYJ|ZYLCKZTYNMOLXY|DFZYTZZKYJ|DJYDJYJ|ZYBDAUYMGY|ZRYHRZDJYLMFZYNDTYTMPZYPMKTJRMOTYGZDRYDLPMTJYDYXZTEZRDJCMKYDTYJMYTMPZYTZARZJYAMKJCKHZKACZTYN|CA|YNZRZYKMJYXCTALMTZXYBOJYDHDCKYT|ZYXCXYKMJYGCKCT|Y"
 	if $which_ct == 0 #Mine
@@ -13,387 +12,175 @@ def cipher_text
 		"GYJ|ZYGDRPYDTY|ZY|DRDTTZXY|ZRYMOJYMGYTECJZYGMRYJ|ZYGLMMRCKHY|ZY|DXYMKAZYRZAZCFZXYT|ZYXCXYGMRYMKZYPMPZKJYECAJORZYN|DJYPCH|JY|DFZYBZZKYJ|ZYRZTOLJYCGYT|ZY|DXYBZZKYGRZZYJMYDAAZEJYJ|ZYMGGZRYIOTJYPDXZY|ZRYMGYBZCKHYJ|ZYPMKCZXYDLZATYNCGZYCJYNMOLXY|DFZYLCGJZXY|ZRYAMPELZJZLQYMOJYMGYTOBIZAJCMKYKMJYMKLQYJMY|ZRYERZTZKJYMEERZTTCFZYZPELMQZRYBOJYJMYDYN|MLZYNMRLXYN|MYTZZPZXYJMYXZTECTZY|ZRYBOJYKMYKMYT|ZYTDCXYBRZDJ|LZTTLQYCYAMOLXYKMJY|DFZYPDRRCZXY|CPYKMNY|ZYCTYTMYOKELZDTDKJYJMYPZYJ|DJYFZRQYKCH|JYT|ZYBZHDKYDKYDEEZDLCKHYLZJJZRYJMYALDRZYAMKAZDLCKHYGRMPY|CPY|ZRY|DRXT|CETYDKXYDTTORCKHY|CPYMGY|ZRYOKXQCKHYDGGZAJCMKYDKQYMKZYN|MY|DXYBZZKYCKYDYEMTCJCMKYJMYRZDXYBZJNZZKYJ|ZYLCKZTYNMOLXY|DFZYTZZKYJ|DJYDJYJ|ZYBDAUYMGY|ZRYHRZDJYLMFZYNDTYTMPZYPMKTJRMOTYGZDRYDLPMTJYDYXZTEZRDJCMKYDTYJMYTMPZYTZARZJYAMKJCKHZKACZTYN|CA|YNZRZYKMJYXCTALMTZXYBOJYDHDCKYT|ZYXCXYKMJYGCKCT|Y"
 	elsif $which_ct == 2 #Burbleys
 		"J|YJMTJOP|PJOOG|EVSJ|PZZ|QMPJ|PZZ|QMPJ|ODJ|OMVY|HMXVSI|DJT|DMSY|VS|PDJ|VEKMPVJSUJ|ZA|M|KJTOZS|HDZOJ|PZTPWTJO|UMWOJ|JXJTG|VSOPMSP|PZ|OJJE|MS|DZWT|YZSP|UZEJ|UQZOJ|PZ|EJ|MSIJQ|SZ|GZW|EWOP|SZP|LJJK|MHMG|CWP|YZSP|GZW|QZXJ|EJ|EG|YJMT|HVAJ|CJUMWOJ|V|DMXJ|CJJS|OZ|KWQQJY|YZHS|CG|VQQSJOO|GZW|MTJ|SZP|OZ|AVULQJ|V|ME|UZEJ|ZS|KWTKZOJ|AZT|GZW|EG|EZPDJT|MSY|AMPDJT|HVQQ|HJQUZEJ|GZW|SZH|GJO|Z|GJO|GJO|CWP|V|OMG|V|OMG|VP|VO|PZZ|QMPJ|ODJ|OJJEJY|PZ|AJJQ|QVLJ|M|AWIVPVXJ|VS|M|YTJME|HDZ|PTVJO|PZ|EZXJ|MHMG|CWP|UMSSZP|YZSP|GZW|LSZH|MQQ|YZSP|GZW|LSZH|VP|GJP|DZH|YZ|GZW|UZEJ|DJTJ|VA|GZW|YZ|SZP|LSZH|V|VSNWVTJY|DJTJ|MSY|PDJTJ|MSY|V|AZWSY|PDJ|HMG|V|HMVPJY|MSY|HMVPJY|AZT|GZW|ODJ|HJSP|ZS|DJT|PZSJO|OWYYJSQG|TJOWEVSI|PDJVT|ZQY|AQWPG|KMPDZO|CWP|GZW|YVY|SZP|UZEJ|MSY|V|HTZPJ|PZ|GZW|MSY|GZW|YVY|SZP|UZEJ|DJ|LJKP|ZS|OMGVSI|GZW|HZWQY|SJXJT|UZEJ|MSG|EZTJ|MSY|PDMP|V|HMO|M|A"
+	elsif $which_ct == 3 #Chengys
+		"NS|WG|NI|YN|WPIXDWYPNXJNI|YPYNSYDYNRZINEPNENIEHYNIXHLNRQNEKNWLWXINI|YQNSEHCYLNERXZINI|YNVEDLYKNFEI|PNSWI|NI|XZV|IPNXJNI|YWDNXSKNGXKGYDKPNYKIWDYHQNZFFYDOXPINRDWKVWKVNI|YWDNEGIWXKPNEINYBYDQNOXOYKINWKNAEDDWKVNGXHHWPWXKNSWI|NI|YNLWONV|XPIPNRY|WKLNI|YONIEHCWKVNEPNI|XZV|NI|YNIWOYNS|YKNIYPPNHWBYLNI|YDYNSYDYNKXINXKYNS|WINWKIYKPYDNWKNPIXDQNI|EKNKXSNYBYKNI|YNPFDWKVNRWDLPNPEKVNXBYDNI|YWDN|YELPNEPNWJNI|YQNI|XZV|INI|YDYNSEPNKXRXLQNOWPPWKVNWKNFEDIWGZHEDNXKNWKMZWDQNXJNI|YPYNFDYGWXZPNWKKXGYKIPNIXNS|XONYBYKNI|YNKEOYNXJNI|YWDNFDYLYGYPPXDPNSEPNENJEWHWKVNOYOXDQNGHEDYNHYEDKYLNI|EINAX|KNLZDRYQJWYHLNSEPNLYELNI|EIN|WPNSWLXSNEKLNG|WHLDYKN|ELNHYJINOEDHXIINLYGHEDWKVNI|EINI|YQNSYDYNVXWKVNIXNHWBYNEINCWKVPRYDYNRZINWKPIYELNXJNLXWKVNPXN|ELNVXKYNXKNIXNEKXI|YDNFHEGYNI|YQNOYKIWXKYLNRQNI|WPNIWOYNGHEDYNER|XDDYLNI|YN|XZPYNJXDNGYEPWKVNIXNGXKIEWKNIYPPNEKLN|EPIYKYLNESE"
+	elsif $which_ct == 4 #Ha
+		"DVUYVMTNDRHNTVMBNBACNCUNBDUVVNWVRUYNRICNJWNYCEMNFDCCYVBDNYBURLIMXLINRLHNHVRBDNURBDVUNBDRLNJWNMXTVNXNMCRBDVNXBNXNACEMHNLCBNMXOVNRMARWNXBNARYNBUEVNBDRBNDVNARYNRBN|UVYVLBNCEBNCTNDXYNFMRYYNSEBNYDVNZLVANBDRBNARYNCLMWNSVFREYVNMXZVN|VBVUNBDVNIUVRBNXLNRNYDX|AUXIDBYNWRUHNDVNARYNYBEHWXLINADRBNDVNARLBVHNBCNZLCANDVNHXHNLCBNJXMZNFCAYNSVFREYVNDVNARYNCSMXIVHNBCNJXMZNFCAYNSEBNSVFREYVNDVNARYNMVRULXLINBCNSVNRNUXFDNRLHN|UCY|VUCEYNHRXUWJRLNMRLHCALVUNRIUXFEMBEUXYBNRLHNSUVVHVUNCTNFRBBMVNDVNACEMHNSVFCJVNRLNRJVUXFRLNCUNREYBURMXRLNRSURDRJNFCJJRLHXLINMXZVNRNJCLRUFDNDXYNTMCFZYNRLHNDXYNDVUHYNDXYNY|CBBVHNRLHNDXYNUXLINYBURZVHNDXYNJVLNYVUORLBYNRLHNDXYNJRXHYNRBNBXJVYNLVOVUBDVMVYYNXBNHXHNYVVJNELRFFCELBRSMVNBCNDVUNBDRBNRNHVFXHVHMWNSCCZXYDNJEYXFRMNBDXLZXLINWCELINJRLNYDCEMHNDROVNFDCYVLNHVMXSVURBVMWNBCNSVNRNTRUJVUNRLHNLCBNRNFMVUIWJRLNMXZVNDXYNTRBDVUNRLHNSUCBDVUYNBD"
+	elsif $which_ct == 5 #Someone elses... AC529
+		"XNAHRGFNUBNEZPXGRZFNVGUMGXYYNFRIMXGXCNRINHXGNPHUJMHPNFUICUIXGYNARFFNCGRITNRPNZPNPHXRGNWGXZTBZYPYNPUNEUGGUANAUIPNPHXSNYHXNZYTXCNYPGZIMXNVXUVFXNPHZPNAXNHZ|XNIX|XGNYXXINSXYNRNYJVVUYXNPHXSNARFFNPHUJMHNIUPNZYNAXNYXICNRPNAHXINRPYNYPGXIMPHNHZYNWXXINFUAXGXCNYUNPHZPNRPNEZSNIUPNMXPNJVNRIPUNPHXRGNHXZCYNIUWFXNEXINZICNIUWFXNAUEXINZEWZYYZCUGYNZICNDXIPJGRUIYNFZCRXYNZICNPGZCXYAUEXINZICNWZWRXYNAHUNHZ|XNIX|XGNYXXINZNDUANAXFFNSXYNVXGHZVYNVZGPRDJFZGFSNDXIPJGRUIYNAHUNCUIPNTIUANZISPHRIMNUBNJYNZICNAHXGXNRPNDUEXYNBGUENUGNPHRITNHUANAXNPAUNCGU|XNERFXYNZDGUYYNPHXNEUUGNPUNIRMHPNRINPHXNGZRINPHZPNRPNERMHPNGXZDHNXENRINPREXNAXNCRCNIUPNCGR|XNXIPRGXFSNUINZDDUJIPNUBNPHXYXNVGXDRUJYNFUICUIXGYNAXNCGU|XNZNFRPPFXNUINUJGNUAINUINZDDUJIPNUBNPHZPNZILRUJYNEZPPXGNAHRDHNSUJNARFFNRNZENYJGXNYXPNZPNGXYPNCXZGNPXYYNIUANVXGERPNEXNPUNVJPNRPNRINPHRYNAZSNSUJNWXFUIMNPUNEXNZFGXZCSNSUJN"
+	elsif $which_ct == 6 #Karan
+		"GEWARUBPJURWPIAN|GASRUPAYRNUKLUIWPJKUGEKLUKAYPJUL|UVADYKGLEUY|KAPUYSSUKQAUKYSHUYILWKUNLWUYERUQGBUTQGOQUQYJUPAYOQARUWJUQAPAUTQLUTLWSRUQYVAUADFAOKARUGKUKLUAERUSGHAUKQGJUTQNURGREKUNAUKQGEHUL|URLGEMUJLBAUMLLRU|LPUNLWPU|YBGSNUGEJKAYRULUKQGEHGEMULESNUL|UNLWPJAS|UJAAUQLTUGVAUMLKUKLUKAYVAUYERUJSYVAUYERUNLWPUFLLPUTAYHU|YKQAPUTGKQUQGJUQAYPKUOSLMMARUSGHAUYURPGFFGEMUFYEUGURGRUQLFAU|LPUJLBAKQGEMUKLUOLBAULWKULUKQGJUKLUJAAUTQYKUYUFPAKKNUFYGPUNLWUYERUQAUBYRAUKQYKURYNUTQAEUNLWURPLVAUYTYNUKLMAKQAPU|LWPUBLEKQJUYMLUJAAUTQYKUQAUQYJUMGVAEUWJUYSSUYJUTAUKQLWMQKUIAOYWJAUTAUTAPAUQGJUHGEUIWKUG|UQAJUELKUGKUBWJKUQYVAUIAAEURLEAUIAOYWJAUL|UQGJUSLVAU|LPUAAUYERUNAKUNLWVAUELKUMLKUQGBUKLUBYPPNUMAKUYSAOURWPIAPVGSSAUGEUKQAUBGERUKLUBYPPNUQAPUQAUBYPPNUQAPULEUBYKPGBLENUQAUQYRUEAVAPULEOAUJYGRUYUTLPRUYERUTQYKUG|UQAUQYRUQLTUYUOLEVWSJGVAUJEYKOQGEMUYKUJLOGYSUJYSVYKGLEUBGMQ"
 	end
 end
 
-$oo = -500
+$found_word = false
+$ct
+$minimum_substitution_alphabet_length
 
-def find_subst_alphabet_in_tess cipher_text_word, subst, ct_split_words
-	# CTW = 'TUVAPIDTF'
-	# Subst = {"T"="E"}
+$DEBUG_OUTPUT = true
 
-	$oo += 1
-
-
+def exercise7b_start
+	#Initialise Tess system
+	init_tess 7
 	
-	puts "CipherWord [#{cipher_text_word}]".cyan
-	return subst if $oo >= 2500
-
-	regex_matcher = ""
-	is_new_word = false
-
-	for i in 0...cipher_text_word.length do 
-		word = cipher_text_word[i]
-
-		if subst.key?word 
-			regex_matcher += "#{subst[word]}"
-		else
-			regex_matcher += "[A-Z]"
-			is_new_word = true
-		end
-	end
-
-	return unless is_new_word
-
-	tess_matching_words = get_matching_words_from_tess regex_matcher, cipher_text_word.length
-
-	puts "Matching words:\n[#{tess_matching_words}]".red
-
-	potential_subst = []
-	for i in 0...tess_matching_words.length do 
-		word = tess_matching_words[i]
-
-		new_subst = get_subst_from_potential_word word, cipher_text_word, subst
-		puts "New subst [#{word}] [#{new_subst}]"
-		#TRY word in the subst
-		# find_subst_alphabet_in_tess word, subst
-		#find a word which
-
-		potential_subst << new_subst unless new_subst == {}
-
-		return subst if $oo >= 5000
-	end
-
-	potential_subst	
-end
-
-def is_word_contained_in_subst word, subst
-	for i in 0...word.length do
-		# puts "WORD[#{i}] [#{word[i]}]"
-		return true unless subst.key?word[i]
-	end
-	return false
-end
-
-def check_for_words_which_arent_in_subst ct_split_words, new_subst
-	words = []
-	for i in 0...ct_split_words.length do 
-		word = ct_split_words[i]
-		# puts "WORD [#{word}]"
-		if is_word_contained_in_subst word, new_subst
-			# puts "[#{ct_split_words[i]}] is not contained in [{new_subst}]"
-			words << word
-		end
-	end
-
-	# puts "Words which aren't in subst (#{words.to_s})"
-	words
-end
-
-$pp = 0
-def find_subst_with_word_analysis ct_split_words, subst
-	$pp += 1
-
-	return subst if $pp == 2500
-
-	words = check_for_words_which_arent_in_subst(ct_split_words, subst).sort_by{|k,v| k.length}.reverse
-	# word = words[0]
-	# puts "WORD [#{word}]"
-
-	return subst if words.length == 0
-
-	for w in 0...words.length do 
-		word = words[w]
-
-		potential_subst = find_subst_alphabet_in_tess(word, subst, {})
-		for i in 0...potential_subst.length do 
-			sb3 = subst.clone ###### ERM?
-			new_subst = potential_subst[i].merge(sb3)
-			pt = substitution_cipher $ct, new_subst
-
-			puts "new_subst.length [#{new_subst.length}]"
-
-			puts "$pp [#{$pp}]\n#{pt}"
-
-			new_pot_subst = find_subst_with_word_analysis ct_split_words, new_subst
-			puts "NEW_POT_SUBST [#{new_pot_subst}]"
-		end
-	end
-
-	puts "End of FSWWA [#{subst}]"
-	subst
-end
-
-def exercise7_start
-	init_tess 5
-
+	#Save the ciphertext to a variable instead of calling it everytime
 	$ct = cipher_text
 
-	# test_str = "ABBOA"
-	# subst = {'A'=>'E', 'B'=>'O', 'O'=>'P'}
-	# sbust_reversed = {'E'=>'A', 'O'=>'B', 'P'=>'O'}
+	###DEFAULTS
+	#The lower the minimum word size, the deeper the search can go and it can take much longer time
+	word_length_minimum = 5
+	#Can finish early if there are enough letters in the substitution alphabet (Used for some ciphertexts which don't have all the characters)
+	$minimum_substitution_alphabet_length = 23
 
 
-	# puts "test_str = [#{test_str}]"
-	# ciphertext = substitution_cipher test_str, subst
-	# puts "Ciphertext = [#{ciphertext}]"
-
-	# plaintext = substitution_cipher ciphertext, sbust_reversed
-	# puts "Plaintext = [#{plaintext}]"
-
-
-	jgr2_subst = {"Y"=>" ", "Z"=>"E"}
-	jgr2_splitter = "Y"
-
-	subst = {"|"=>" ", "K"=>"E", "F"=>"T"}
-	splitter = "|"
-
+	#Find the letter frequency of the whole ciphertext
 	letter_frequency = letter_analysis $ct
-	puts "LF [0] = [#{letter_frequency[0]}]"
-	puts "LF [1] = [#{letter_frequency[1]}]"
+	#Assume that most frequent is a space, and that second frequent is an E. This solver fails if either is false...
+	initial_substitution_alphabet = {letter_frequency[0][0] => "|", letter_frequency[1][0] => "E"}
 
-	subst = {letter_frequency[0][0] => " ", letter_frequency[1][0] => "E"}
-	splitter = letter_frequency[0][0]
-
-
-	subst = {"|" => " ", "Z"=>"E"}
-	# subst = jgr2_subst
-	# splitter = jgr2_splitter
-
-	# subst = {"L"=>"C", "I"=>"I", "S"=>"R", "R"=>"U", "A"=>"M", "D"=>"S", 
-	# 	"T"=>"T", "U"=>"A", "Q"=>"N", "V"=>"L", "|"=>" ", "K"=>"E", "F"=>"T",
-	# 	"P"=>"G", "W"=>"F", "N"=>"D", "C"=>"Y", "H"=>"O", "M"=>"P", "O"=>"B", "B"=>"K",
-	# 	"Y"=>"V","E"=>"W","G"=>"H", "Z"=>"J", "X"=>"X"}
-
-	#EYESCEGESE
-	#S=>R
-	#RR
-
-	#{'|'=>' ','K'=>'E', 'F'=>'T'}
-	#{'|'=>' ', 'K'=>'E', 'F'=>'T', 'U'=>'O', 'G'=>'H'}
-	#, 'F'=>'T', 'G'=>'H', 'Q'=>'N'}#, 'H'=>'N', 'W'=>'S', 'D'=>'O', 'U'=>'A'}
-
-	# text_letter_analysis = letter_analysis cipher_text
-	# puts "letter analysis:\n#{text_letter_analysis}"
+	#Set a global splitter item 
+	#Word splitter is the space character which is used to seperate words in my ciphertext (Also the first item in the letter analysis)
+	$tess_splitter = letter_frequency[0][0]
 
 
-
-	### Split the cipher text by the space to find all the words
-	ct_split = $ct.split(splitter)
-	ct_length = Hash.new(0)
+	#Split the ciphertext instead words to be used for analysis
+	ct_split = $ct.split $tess_splitter
 	ct_split_words = []
 	ct_split.each do |ct_word|
 		word_length = ct_word.length
 
-		next if word_length < 3
-
-		ct_length[word_length] += 1
+		#Skip the word if it's not of the minimum length we want to check for
+		next if word_length < word_length_minimum
 		ct_split_words << ct_word
-		# ct_split_words[ct_word] += 1
 	end	
-	# puts "CT SPLIT WORDS #{ct_split_words}"
-	# ct_split_words = ct_split_words.sort_by{|k,v| k.length}
-	# # ct_split_words.each {|k,v| puts "Length of [#{k}] x [#{v.length}]"} #Debug print
 
-	ct_length = ct_length.sort_by{|k,v| k}
-	ct_length.each do |k,v|
-		# puts "Length of [#{k}] x [#{v}]"
+	#Get the final substitution alphabet... easier said than done
+	final_substitution_alphabet = find_subst_with_word_analysis ct_split_words, initial_substitution_alphabet
+
+	#Get the plaintext from the substitution alphabet - assuming we have found one and the program is not indefinitely running...
+	plaintext = substitution_cipher cipher_text, final_substitution_alphabet
+
+	#Print the output
+	puts "Exercise7 plaintext:"
+	puts plaintext[0...30]
+
+end
+
+## 1
+def find_subst_with_word_analysis split_words, substitution_alphabet
+	return substitution_alphabet if $found_word
+	words = words_which_arent_in_substitution_alphabet(split_words, substitution_alphabet).sort_by{|k,v| k.length}.reverse  ## Call 2
+	return substitution_alphabet if words.length == 0
+
+	if $DEBUG_OUTPUT
+		puts "[find_subst_with_word_analysis]".cyan
+		puts "Words which aren't complete in the substituion alphabet:".blue + "\n#{words}\n".yellow
 	end
 
-	puts "CTSPLIT [#{ct_split_words.length}]"
+	for i in 0...words.length do 
+		word = words[i]
+		puts "Checking word: ".blue+word.green if $DEBUG_OUTPUT
 
-	# for i in 0...10 do 
-	# 	break
-	# 	max_length = ct_split_words.max_by(&:length)
-	# 	puts "MaxLength Word {#{max_length} - #{max_length.length}}"
+		potential_substitution_alphabets = find_substitution_alphabets_in_tess word, substitution_alphabet ## Call 4
+		for j in 0...potential_substitution_alphabets.length do 
+			new_substitution_alphabet = potential_substitution_alphabets[j].merge(substitution_alphabet)
+			# puts "new_substitution_alphabet = [#{new_substitution_alphabet}]"
 
-	# 	new_ct_split_words = ct_split_words.reject{|e| e==max_length}
-	# 	puts "CTSPLIT [#{new_ct_split_words.length}]"
-	# 	puts "subst [#{subst}]"
-	# 	# new_subst = find_subst_alphabet_in_tess max_length, subst, new_ct_split_words
-	# 	puts "subst [#{subst}]"
-	# end					
+			plaintext = substitution_cipher $ct, new_substitution_alphabet
+			puts "plaintext:\n#{plaintext}" if $DEBUG_OUTPUT
 
+			###ToDo:
+			### Check all words in the plaintext which are whole and if any are not in tess then skip to the next alphabet
+			whole_words_in_pt = get_whole_words_in_pt $ct, new_substitution_alphabet
+			puts "whole_words_in_pt:\n#{whole_words_in_pt}" if $DEBUG_OUTPUT
+			count_of_non_whole_words = count_non_words_in_array whole_words_in_pt, new_substitution_alphabet
+			puts "count_of_non_whole_words:\n#{count_of_non_whole_words}" if $DEBUG_OUTPUT
 
-	new_subst = find_subst_with_word_analysis ct_split_words, subst
-	puts "new_subst: [#{new_subst.to_s}]"
-
-
-	#Get initial words in ct_split_words which aren't in our cipher text
-	initial_words = check_for_words_which_arent_in_subst(ct_split_words, subst).sort_by{|k,v| k.length}.reverse
-	# puts "Initial words: [#{initial_words.to_s}]"
-
-	#First word to try
-	initial_word = initial_words[0]
-
-	#Get words <----
-	#Get word in words
-	#Get potential subst [find_subst_alphabet(word, subst)]
-		##For each potential subst
-		#Get new subst by merging
-		#Show Plaintext from new subst
-
-		#Get new words [check_for_words] <-----
+			break if count_of_non_whole_words > 2
 
 
+			new_potential_substitution_alphabet = find_subst_with_word_analysis split_words, new_substitution_alphabet
+			return new_potential_substitution_alphabet if $found_word
 
-	return "STOP"
-	potential_subst = find_subst_alphabet_in_tess("LISLRADFUQFIUV", subst, {})#ct_split_words)#.merge(subst)
-	for i in 0...potential_subst.length do 
-		puts "Trying potential subst: [#{potential_subst[i].to_s}]"
+			unless new_potential_substitution_alphabet == {}
+				new_potential_substitution_alphabet_length = new_potential_substitution_alphabet.length
+				next if new_potential_substitution_alphabet_length < $minimum_substitution_alphabet_length
+				puts "Size of new_potential_substitution_alphabet [#{new_potential_substitution_alphabet_length}]".red if $DEBUG_OUTPUT
 
-		new_subst = potential_subst[i].merge(subst)
+				count_of_non_words = count_non_words_in_plaintext plaintext
+				puts "Count of non words [#{count_of_non_words}]".green if $DEBUG_OUTPUT
 
-		pt = substitution_cipher $ct, new_subst
-		puts "Plaintext:\n#{pt}"
-
-
-
-
-
-		words = check_for_words_which_arent_in_subst ct_split_words, new_subst
-
-		words = words.sort_by{|k,v| k.length}.reverse
-		puts "WORRRRDS [#{words.to_s}]"
-
-		new_word_to_find = words[0]
-		puts "New word to find [#{new_word_to_find}]"
-
-		potential_subst_2 = find_subst_alphabet_in_tess(new_word_to_find, new_subst, {})
-
-		puts "PS2 [#{potential_subst_2}]"
-
-		for j in 0...potential_subst_2.length do 
-			puts "Trying [2] Potential subst2: [#{potential_subst_2[j].to_s}]"
-			new_subst_2 = potential_subst_2[j].merge(new_subst)
-
-			pt_2 = substitution_cipher $ct, new_subst_2
-			puts "Plaintext2:\n#{pt_2}"
-
-
-			words_3 = check_for_words_which_arent_in_subst ct_split_words, new_subst_2
-			words_3 = words_3.sort_by{|k,v| k.length}.reverse
-			new_word_3 = words_3[0]
-
-			ps3 = find_subst_alphabet_in_tess(new_word_3, new_subst_2, {})
-			for k in 0...ps3.length do 
-				new_subst_3 = ps3[k].merge(new_subst_2)
-				pt_3 = substitution_cipher $ct, new_subst_3
-				puts "Plaintext3:\n#{pt_3}"
-
-
+				$found_word = true
+				return new_potential_substitution_alphabet if count_of_non_words <= 2
 			end
-		end
 
-		# ct_split_words = ct_split_words.sort_by{|k,v| k.length}
-		# # ct_split_words.each {|k,v| puts "Length of [#{k}] x [#{v.length}]"} #Debug print
-	end
-	# new_pt = substitution_cipher ct, new_subst
-
-
-
-
-	# max_length = ct_split_words.max_by{|k,v| k.length}[0].length
-	# puts "MaxLength [#{max_length}]"
-
-
-	# word = ct_split_words.select{|k,v| k.length == max_length}
-	# puts "Word [#{word}]"
-
-	# ct_split_words.delete(word[0])
-	# puts "Delted word"
-
-	# puts ct_split_words.to_a.to_s
-
-	# word_length_max = ct_length.max[0]
-	# puts word_length_max
-	# puts ct_split_words.to_s
-
-	# word =  ct_split_words.select{|k,v| k == 14}
-	# puts word
-
-	# ct_split_words.delete(word.to_s)
-	# puts ct_split_words.to_s
-
-	#Iteration process
-	# max_word_length = ct_split_words.max[0]
-	# word = ct_split_words[0][0]
-	# puts "Max word length: [#{max_word_length}] [#{word}]"
-
-	# # puts ct_split_words
-	# ct_split_words.delete(1)
-	# puts ct_split_words.to_s
-
-	# max_word_length = ct_split_words.max[0]
-	# puts "Max word length: [#{max_word_length}]"
-	#End of Iteration process
-
-	# plain_text = substitution_cipher cipher_text, subst
-	# puts plain_text
-
-	# pt_split = plain_text.split(' ')
-	
-	# pt_split_words = Hash.new(0)
-	# pt_split.each do |str|
-	# 	puts str
-	# end
-
-
-
-
-
-
-
-
-	return "x"
-
-	plain_text_split = plain_text.split(' ')
-	pts_length = Hash.new(0)
-	words = Hash.new(0)
-
-	plain_text_split.each do |str|
-		str = str.gsub(/\e\[([;\d]+)?m/, '') #decolorize string
-		pts_length[str.length] += 1
-		if pts_length[str.length] == 1
-			words[str.length] = []
-		end
-		words[str.length] << str
-	end
-
-	pts_length = pts_length.sort_by{|k,v| k}
-	pts_length.each do |k,v|
-		puts "Length of [#{k}] x [#{v}]"
-	end
-
-	word_length_max = pts_length.max[0]
-	puts "Words [length=#{word_length_max}] [#{words[word_length_max]}]"
-
-	tess_27_words = get_words_of_length word_length_max
-
-	for i in 0...words[word_length_max].length 
-		cipher_word = words[word_length_max][i]
-
-		# Get all of the potential words 
-		potential_words_which_fit = does_tess_contain_word cipher_word, subst
-		for i in 0...potential_words_which_fit.length do
-			potential_word = potential_words_which_fit[i] 
-			new_subst = get_subst_from_potential_word(potential_word, cipher_word).merge(subst)
-
-			puts "Word [#{potential_word}] subst[#{new_subst.to_s}]"
-
-			new_pt = substitution_cipher cipher_text, new_subst
-
-			puts "NEW PLAINTEXT:\n#{new_pt}\n"
 		end
 	end
 
-	puts "WORDS WHICH FIT [#{potential_words_which_fit.to_s}]"
+	return substitution_alphabet
+end
+
+## 2
+def words_which_arent_in_substitution_alphabet split_words, substitution_alphabet
+	words = []
+	for i in 0...split_words.length do 
+		word = split_words[i]
+		words << word if word_is_not_contained_in_substiution_alphabet word, substitution_alphabet ## Call 3
+	end
+	words
+end
+
+## 3
+def word_is_not_contained_in_substiution_alphabet word, substitution_alphabet
+	# puts "[word_is_not_contained_in_substiution_alphabet]".cyan
+	# puts "substitution_alphabet:\n#{word}-#{substitution_alphabet}"
+	for l in 0...word.length do
+		return true unless substitution_alphabet.key?word[l]
+	end
+	return false
+end
+
+## 4
+def find_substitution_alphabets_in_tess ciphertext, substitution_alphabet
+	regex_matcher = ""
+
+	for i in 0...ciphertext.length do 
+		word = ciphertext[i]
+
+		if substitution_alphabet.key?word 
+			regex_matcher += "#{substitution_alphabet[word]}"
+		else
+			regex_matcher += "[A-Z]"
+		end
+	end
+
+	return {} if regex_matcher.length == ciphertext.length
+
+
+	matching_plaintext_words = get_matching_words_from_tess regex_matcher, ciphertext.length
+
+	potential_substitutions = []
+	for i in 0...matching_plaintext_words.length do 
+		matching_word = matching_plaintext_words[i]
+
+		new_substitution_alphabet = get_subst_from_potential_word matching_word, ciphertext, substitution_alphabet
+		# puts "New Substitution alphabet [#{new_substitution_alphabet}]".cyan
+
+		potential_substitutions << new_substitution_alphabet unless new_substitution_alphabet == {}
+
+		puts "Matching word: "+matching_word.red if $DEBUG_OUTPUT#unless new_substitution_alphabet == {}
+	end
 	
-	
-
-	# puts "Tess27Words [#{tess_27_words}]"
-
-	# puts words[pts_length.max[0]]
-
-	# puts plain_text
+	puts "\n" if $DEBUG_OUTPUT
+	potential_substitutions
 end

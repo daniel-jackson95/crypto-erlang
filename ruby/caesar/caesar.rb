@@ -1,7 +1,6 @@
-def caesar_cipher text, key, is_encryption
+def caesar_cipher text, key_value, is_encryption
 	#Setup the new cipher/plain text
 	final_text = ""
-	key_value = key
 
 	for i in 0...text.length do 
 		text_value = text[i].ord - 65 #Get the letter ASCII value minus 65 to convert to [0-25]

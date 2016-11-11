@@ -37,9 +37,12 @@ def get_subst_from_potential_word potential_word, cipher_word, existing_subst
 	subst
 end
 
-# This gets the most common letter frequency for a set amount of columns in a ciphertext - EX3
+# This gets the most common letter frequency for a set amount of columns in a ciphertext
 def get_cipher_text_letter_frequency cipher_text, columns, most_frequent_letters
+	#Get the split columns
 	split_cols = split_string_into_cols cipher_text, columns
+
+	#Setup frequency and permutation arrays
 	cipher_text_split_cols_freq = []
 	cipher_shift_permutations = []
 	for i in 0...columns do 

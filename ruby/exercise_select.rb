@@ -4,8 +4,8 @@ require_relative 'exercise3/exercise3.rb'
 require_relative 'exercise4/exercise4.rb'
 require_relative 'exercise5/exercise5.rb'
 require_relative 'exercise6/exercise6.rb'
-# require_relative 'exercise7/exercise7.rb'
-require_relative 'exercise7/exercise7b.rb'
+# require_relative 'exercise7/exercise7-old.rb'
+require_relative 'exercise7/exercise7.rb'
 
 def process number
 	$exercises[number].call if number > 0 and number < 8

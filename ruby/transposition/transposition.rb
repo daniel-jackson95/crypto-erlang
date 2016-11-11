@@ -1,26 +1,3 @@
-
-def get_index_position_from_key key 
-	letter_indexes = []
-	for i in 0...key.length do 
-		letter_indexes[i] = key[i].ord-65
-	end
-
-	letter_indexes_ordered = []
-	index_pos = 0
-
-	while(letter_indexes.length > 0)
-		letter_index_min = letter_indexes.index(letter_indexes.min)
-		break if letter_indexes.min > 999
-
-		letter_indexes[letter_index_min] = 99999
-
-		letter_indexes_ordered[letter_index_min] = index_pos
-		index_pos += 1
-	end
-
-	letter_indexes_ordered
-end
-
 def get_columns_from_index_positions cipher_text, index_positions
 	plain_text_cols = []
 	columns = index_positions.length
@@ -44,12 +21,6 @@ def get_plain_text_from_cols plain_text_cols
 	for i in 0...total_letters do 
 		plain_text += plain_text_cols[i % columns][i / columns]
 	end
-
-	# for i in 0...letters_per_col do 
-	# 	for j in 0...columns do 
-	# 		plain_text += plain_text_cols[j][i]
-	# 	end
-	# end
 
 	plain_text
 end
