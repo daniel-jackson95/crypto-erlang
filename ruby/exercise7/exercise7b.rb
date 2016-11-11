@@ -26,6 +26,9 @@ end
 $found_word = false
 $ct
 $minimum_substitution_alphabet_length
+
+$DEBUG_OUTPUT = false
+
 def exercise7b_start
 	#Initialise Tess system
 	init_tess 7
@@ -70,12 +73,14 @@ def find_subst_with_word_analysis split_words, substitution_alphabet
 	words = words_which_arent_in_substitution_alphabet(split_words, substitution_alphabet).sort_by{|k,v| k.length}.reverse  ## Call 2
 	return substitution_alphabet if words.length == 0
 
-	puts "[find_subst_with_word_analysis]".cyan
-	puts "Words which aren't complete in the substituion alphabet:".blue + "\n#{words}\n".yellow
+	if $DEBUG_OUTPUT
+		puts "[find_subst_with_word_analysis]".cyan
+		puts "Words which aren't complete in the substituion alphabet:".blue + "\n#{words}\n".yellow
+	end
 
 	for i in 0...words.length do 
 		word = words[i]
-		puts "Checking word: ".blue+word.green
+		puts "Checking word: ".blue+word.green if $DEBUG_OUTPUT
 
 		potential_substitution_alphabets = find_substitution_alphabets_in_tess word, substitution_alphabet ## Call 4
 		for j in 0...potential_substitution_alphabets.length do 
@@ -83,15 +88,14 @@ def find_subst_with_word_analysis split_words, substitution_alphabet
 			# puts "new_substitution_alphabet = [#{new_substitution_alphabet}]"
 
 			plaintext = substitution_cipher $ct, new_substitution_alphabet
-			puts "plaintext:\n#{plaintext}"
-
+			puts "plaintext:\n#{plaintext}" if $DEBUG_OUTPUT
 
 			###ToDo:
 			### Check all words in the plaintext which are whole and if any are not in tess then skip to the next alphabet
 			whole_words_in_pt = get_whole_words_in_pt $ct, new_substitution_alphabet
-			puts "whole_words_in_pt:\n#{whole_words_in_pt}"
+			puts "whole_words_in_pt:\n#{whole_words_in_pt}" if $DEBUG_OUTPUT
 			count_of_non_whole_words = count_non_words_in_array whole_words_in_pt, new_substitution_alphabet
-			puts "count_of_non_whole_words:\n#{count_of_non_whole_words}"
+			puts "count_of_non_whole_words:\n#{count_of_non_whole_words}" if $DEBUG_OUTPUT
 
 			break if count_of_non_whole_words > 2
 
@@ -102,10 +106,10 @@ def find_subst_with_word_analysis split_words, substitution_alphabet
 			unless new_potential_substitution_alphabet == {}
 				new_potential_substitution_alphabet_length = new_potential_substitution_alphabet.length
 				next if new_potential_substitution_alphabet_length < $minimum_substitution_alphabet_length
-				puts "Size of new_potential_substitution_alphabet [#{new_potential_substitution_alphabet_length}]".red
+				puts "Size of new_potential_substitution_alphabet [#{new_potential_substitution_alphabet_length}]".red if $DEBUG_OUTPUT
 
 				count_of_non_words = count_non_words_in_plaintext plaintext
-				puts "Count of non words [#{count_of_non_words}]".green
+				puts "Count of non words [#{count_of_non_words}]".green if $DEBUG_OUTPUT
 
 				$found_word = true
 				return new_potential_substitution_alphabet if count_of_non_words <= 2
@@ -165,7 +169,7 @@ def find_substitution_alphabets_in_tess ciphertext, substitution_alphabet
 
 		potential_substitutions << new_substitution_alphabet unless new_substitution_alphabet == {}
 
-		puts "Matching word: "+matching_word.red #unless new_substitution_alphabet == {}
+		puts "Matching word: "+matching_word.red if $DEBUG_OUTPUT#unless new_substitution_alphabet == {}
 	end
 	
 	puts "\n"
