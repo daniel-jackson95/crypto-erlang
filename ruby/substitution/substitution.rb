@@ -19,5 +19,5 @@ def substitution_cipher cipher_text, substitution_alphabet
 	end
 
 	#Return a plaintext of mostly red at the start of the program and green near the completed alphabet and plaintext
-	plain_text
+	plain_text.uncolorize
 end

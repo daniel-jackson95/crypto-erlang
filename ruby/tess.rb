@@ -27,32 +27,32 @@ def get_matching_words_from_tess regex_string, length
 	words
 end
 
-def does_tess_contain_word cipher_text, substitution_alphabet
-	word_length = cipher_text.length
-	tess_27_with_words_of_length = get_words_of_length word_length
+# def does_tess_contain_word cipher_text, substitution_alphabet
+# 	word_length = cipher_text.length
+# 	tess_27_with_words_of_length = get_words_of_length word_length
 
-	# puts tess_27_with_words_of_length
+# 	# puts tess_27_with_words_of_length
 
-	words = []
+# 	words = []
 
-	for i in 0...tess_27_with_words_of_length.length do
-		# puts tess_27_with_words_of_length[i]
-		word = tess_27_with_words_of_length[i][0]
+# 	for i in 0...tess_27_with_words_of_length.length do
+# 		# puts tess_27_with_words_of_length[i]
+# 		word = tess_27_with_words_of_length[i][0]
 
-		#CIRCUMS T AN  T IAL
-		#      7 1  2  1   3
-		#      7 8  9 10  14
+# 		#CIRCUMS T AN  T IAL
+# 		#      7 1  2  1   3
+# 		#      7 8  9 10  14
 
-		if word.match('[A-Z]{7}T[A-Z]{2}T[A-Z]{3}')
-			words << word
-		end
-		# puts word
-	end
+# 		if word.match('[A-Z]{7}T[A-Z]{2}T[A-Z]{3}')
+# 			words << word
+# 		end
+# 		# puts word
+# 	end
 
-	return words
+# 	return words
 
-	# puts "t27wwo_length [#{word_length}]\n[#{tess_27_with_words_of_length}]"
-end
+# 	# puts "t27wwo_length [#{word_length}]\n[#{tess_27_with_words_of_length}]"
+# end
 def get_words_of_length word_length
 	return tess27wordfrequency.select{|k,v| k.length == word_length}.sort_by{|k,v| v}.reverse
 end
@@ -91,7 +91,7 @@ def get_whole_words_in_pt plaintext, substitution_alphabet
 	split_pt = plaintext.uncolorize.split($tess_splitter)
 	words = []
 
-	puts "subst [#{substitution_alphabet}]"
+	# puts "subst [#{substitution_alphabet}]"
 	for i in 0...split_pt.length do
 		word = split_pt[i]
 		# puts "Word [#{i}] [#{word}]"

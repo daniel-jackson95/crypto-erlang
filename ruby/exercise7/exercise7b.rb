@@ -63,7 +63,10 @@ def exercise7b_start
 
 	final_substitution_alphabet = find_subst_with_word_analysis ct_split_words, initial_substitution_alphabet
 
+	plaintext = substitution_cipher cipher_text, final_substitution_alphabet
 
+	puts "Exercise7 plaintext:"
+	puts plaintext[0...30]
 
 end
 
@@ -172,6 +175,6 @@ def find_substitution_alphabets_in_tess ciphertext, substitution_alphabet
 		puts "Matching word: "+matching_word.red if $DEBUG_OUTPUT#unless new_substitution_alphabet == {}
 	end
 	
-	puts "\n"
+	puts "\n" if $DEBUG_OUTPUT
 	potential_substitutions
 end
