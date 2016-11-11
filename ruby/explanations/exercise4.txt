@@ -1,12 +1,20 @@
 WATCHEDWINDSANDSNOWSANDRAINSGO
 
 I found the key length of 8 by
-analysing pairs of words [THE]
-was repeated at X and Y and the difference was a multiple of 8 
-which means that the key length is 8
-I then assumed that E would be in the top 3 characters
-this means that there are 3^8 keys to try 
-I then found the plaintext which had the most words that are in tess27
+analysing the text and finding
+that ‘PROT’ appears 3 times
+and that there is a spacing of
+multiples of 8, so I assumed
+that it was the key length.
+I then assumed that E would be
+ in the top 3 characters
+this means that there are 3^8
+ keys to try 
+I then found the plaintext
+which had the most words 
+that are in tess27 and 
+assumed that was the correct
+plaintext
 
 I wrote a program to solve
 this:

@@ -33,7 +33,9 @@ def exercise3_start
 	potential_keys = []
 
 	for i in 0...perm.length do 
-		print "#{i}/#{perm.length}\r" if i % 50 == 0
+		#I do this... because ruby is apparently really slow with strings and it takes forever
+		# so this is to show progress that the program is still running
+		print "#{i}/#{perm.length}\r" if i % 100 == 0
 
 		#Get the key from the permutation of possible keys
 		key = key_from_string(perm[i])
@@ -51,7 +53,7 @@ def exercise3_start
 	potential_keys = potential_keys.sort_by{|k,v| v}.reverse
 
 	#Get the plaintext from the first potential key 
-	plaintext = vigenere_decrypt exercise3_ciphertext, potential_keys[0][0]
+	plaintext = vigenere_decrypt ct, potential_keys[0][0]
 
 	#Print out the first 30 characters of the plaintext 
 	puts "Exercise3 plaintext:"
