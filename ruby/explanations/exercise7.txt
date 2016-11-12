@@ -1,4 +1,4 @@
-HERSELF|HAD|FELT|TWO|OR|THREE|
+RKS|AND|THUS|AS|HAS|BEEN|SAID|
 
 First I do a letter frequency
 analysis on the ciphertext in
@@ -6,16 +6,20 @@ which I make an assumption
 that the first common letter
 is a space and that the 
 second common letter is an E.
+
 I then split the tess27 
 text into words by splitting
 with the assumed space
 letter.
+
 I then try to find words
 which match a regex of the
 assumed E character.
+
 I then try all the
 combinations of words which
 can match the regex.
+
 If a word fits, I add the
 matching substitution
 alphabet to the alphabet of
@@ -27,6 +31,7 @@ substitution alphabets in
 the program which be branched
 off of using different words
 at different places.
+
 I have some checks that say
 if there is a complete 
 substitution alphabet of 

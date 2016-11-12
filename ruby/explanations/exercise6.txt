@@ -7,7 +7,9 @@ ordering, so I end up with
 I then decrypt the ciphertext
 with each key and calculate
 the word frequency score.
-At the end I pick the
+At the end I pick the key
+which produces the highest
+word frequency score
 
 I wrote a program to solve
 this:

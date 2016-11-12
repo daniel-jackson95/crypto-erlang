@@ -3,31 +3,13 @@ require_relative '../utility'
 require_relative '../substitution/substitution'
 require 'colorize'
  
-$which_ct = 4
 def cipher_text
-	#{}"GYJ|ZYGDRPYDTY|ZY|DRDTTZXY|ZRYMOJYMGYTECJZYGMRYJ|ZYGLMMRCKHY|ZY|DXYMKAZYRZAZCFZXYT|ZYXCXYGMRYMKZYPMPZKJYECAJORZYN|DJYPCH|JY|DFZYBZZKYJ|ZYRZTOLJYCGYT|ZY|DXYBZZKYGRZZYJMYDAAZEJYJ|ZYMGGZRYIOTJYPDXZY|ZRYMGYBZCKHYJ|ZYPMKCZXYDLZATYNCGZYCJYNMOLXY|DFZYLCGJZXY|ZRYAMPELZJZLQYMOJYMGYTOBIZAJCMKYKMJYMKLQYJMY|ZRYERZTZKJYMEERZTTCFZYZPELMQZRYBOJYJMYDYN|MLZYNMRLXYN|MYTZZPZXYJMYXZTECTZY|ZRYBOJYKMYKMYT|ZYTDCXYBRZDJ|LZTTLQYCYAMOLXYKMJY|DFZYPDRRCZXY|CPYKMNY|ZYCTYTMYOKELZDTDKJYJMYPZYJ|DJYFZRQYKCH|JYT|ZYBZHDKYDKYDEEZDLCKHYLZJJZRYJMYALDRZYAMKAZDLCKHYGRMPY|CPY|ZRY|DRXT|CETYDKXYDTTORCKHY|CPYMGY|ZRYOKXQCKHYDGGZAJCMKYDKQYMKZYN|MY|DXYBZZKYCKYDYEMTCJCMKYJMYRZDXYBZJNZZKYJ|ZYLCKZTYNMOLXY|DFZYTZZKYJ|DJYDJYJ|ZYBDAUYMGY|ZRYHRZDJYLMFZYNDTYTMPZYPMKTJRMOTYGZDRYDLPMTJYDYXZTEZRDJCMKYDTYJMYTMPZYTZARZJYAMKJCKHZKACZTYN|CA|YNZRZYKMJYXCTALMTZXYBOJYDHDCKYT|ZYXCXYKMJYGCKCT|Y"
-	if $which_ct == 0 #Mine
-		"SBD|UQN|FGRD|UD|GUD|OKKQ|DUIN|FGHRPG|FGK|NUAM|LRSFUIQD|HW|FGKIS|OHQQKFD|WVUMMKN|DAUSFVC|IQFH|FGKIS|WULKD|UQN|FGKIS|ESUMMKSD|LVRQP|UOHRF|FGKA|FH|EKUSIDHAKQKDD|FGKC|VIYKN|UVV|FGID|UWFKSQHHQ|IQ|AKAHSIKD|HW|PSKKQ|DRQQC|SHAUQFIL|FUVOHFGUCD|CHR|LUQ|DKK|U|PVKUA|HW|U|GIVV|EIFGIQ|U|WKE|AIVKD|H|WSHHA|YUVVKC|WSHA|GKSK|EGKQ|FID|WIQK|DUIN|AUSIUQ|UG|LUQ|CHR|DUIN|FKDD|UEUBK|FH|FGK|QKE|YUVRK|HW|FGID|VHLUVIFC|DH|FGK|FEH|WHSLKD|EKSK|UF|EHSB|GKSK|UD|KYKSCEGKSK|FGK|IQGKSKQF|EIVV|FH|KQZHC|UQN|FGK|LISLRADFUQFIUV|EIVV|UPUIQDF|KQZHCAKQF|AUSIUQD|EIVV|GUN|U|AKFGHN|HW|UDDIDFIQP|IFDKVW|OC|FUBIQP|WSHA|GKS|MHLBKF|UD|FGK|UWFKSQHHQ|EHSK|HQ|U|MIQF|OHFFVK|LHSBKN|EIFG|EGIFK|SUP|WSHA|EGILG|DGK|IQYIFKN|FKDD|FH|NSIQB|FKDDD|RQUDDIDFKN|MHEKS|HW|NSKUAIQP|GHEKYKS|OKIQP|KQHRPG|WHS|GKS|DROVIAUFIHQ|UF|MSKDKQF|DGK|NKLVIQKN|KXLKMF|FGK|AKSKDF|DIM|UQN|FGKQ|AUSIUQ|FHHB|U|MRVV|W"
-	elsif $which_ct == 1 #Jamies
-		"GYJ|ZYGDRPYDTY|ZY|DRDTTZXY|ZRYMOJYMGYTECJZYGMRYJ|ZYGLMMRCKHY|ZY|DXYMKAZYRZAZCFZXYT|ZYXCXYGMRYMKZYPMPZKJYECAJORZYN|DJYPCH|JY|DFZYBZZKYJ|ZYRZTOLJYCGYT|ZY|DXYBZZKYGRZZYJMYDAAZEJYJ|ZYMGGZRYIOTJYPDXZY|ZRYMGYBZCKHYJ|ZYPMKCZXYDLZATYNCGZYCJYNMOLXY|DFZYLCGJZXY|ZRYAMPELZJZLQYMOJYMGYTOBIZAJCMKYKMJYMKLQYJMY|ZRYERZTZKJYMEERZTTCFZYZPELMQZRYBOJYJMYDYN|MLZYNMRLXYN|MYTZZPZXYJMYXZTECTZY|ZRYBOJYKMYKMYT|ZYTDCXYBRZDJ|LZTTLQYCYAMOLXYKMJY|DFZYPDRRCZXY|CPYKMNY|ZYCTYTMYOKELZDTDKJYJMYPZYJ|DJYFZRQYKCH|JYT|ZYBZHDKYDKYDEEZDLCKHYLZJJZRYJMYALDRZYAMKAZDLCKHYGRMPY|CPY|ZRY|DRXT|CETYDKXYDTTORCKHY|CPYMGY|ZRYOKXQCKHYDGGZAJCMKYDKQYMKZYN|MY|DXYBZZKYCKYDYEMTCJCMKYJMYRZDXYBZJNZZKYJ|ZYLCKZTYNMOLXY|DFZYTZZKYJ|DJYDJYJ|ZYBDAUYMGY|ZRYHRZDJYLMFZYNDTYTMPZYPMKTJRMOTYGZDRYDLPMTJYDYXZTEZRDJCMKYDTYJMYTMPZYTZARZJYAMKJCKHZKACZTYN|CA|YNZRZYKMJYXCTALMTZXYBOJYDHDCKYT|ZYXCXYKMJYGCKCT|Y"
-	elsif $which_ct == 2 #Burbleys
-		"J|YJMTJOP|PJOOG|EVSJ|PZZ|QMPJ|PZZ|QMPJ|ODJ|OMVY|HMXVSI|DJT|DMSY|VS|PDJ|VEKMPVJSUJ|ZA|M|KJTOZS|HDZOJ|PZTPWTJO|UMWOJ|JXJTG|VSOPMSP|PZ|OJJE|MS|DZWT|YZSP|UZEJ|UQZOJ|PZ|EJ|MSIJQ|SZ|GZW|EWOP|SZP|LJJK|MHMG|CWP|YZSP|GZW|QZXJ|EJ|EG|YJMT|HVAJ|CJUMWOJ|V|DMXJ|CJJS|OZ|KWQQJY|YZHS|CG|VQQSJOO|GZW|MTJ|SZP|OZ|AVULQJ|V|ME|UZEJ|ZS|KWTKZOJ|AZT|GZW|EG|EZPDJT|MSY|AMPDJT|HVQQ|HJQUZEJ|GZW|SZH|GJO|Z|GJO|GJO|CWP|V|OMG|V|OMG|VP|VO|PZZ|QMPJ|ODJ|OJJEJY|PZ|AJJQ|QVLJ|M|AWIVPVXJ|VS|M|YTJME|HDZ|PTVJO|PZ|EZXJ|MHMG|CWP|UMSSZP|YZSP|GZW|LSZH|MQQ|YZSP|GZW|LSZH|VP|GJP|DZH|YZ|GZW|UZEJ|DJTJ|VA|GZW|YZ|SZP|LSZH|V|VSNWVTJY|DJTJ|MSY|PDJTJ|MSY|V|AZWSY|PDJ|HMG|V|HMVPJY|MSY|HMVPJY|AZT|GZW|ODJ|HJSP|ZS|DJT|PZSJO|OWYYJSQG|TJOWEVSI|PDJVT|ZQY|AQWPG|KMPDZO|CWP|GZW|YVY|SZP|UZEJ|MSY|V|HTZPJ|PZ|GZW|MSY|GZW|YVY|SZP|UZEJ|DJ|LJKP|ZS|OMGVSI|GZW|HZWQY|SJXJT|UZEJ|MSG|EZTJ|MSY|PDMP|V|HMO|M|A"
-	elsif $which_ct == 3 #Chengys
-		"NS|WG|NI|YN|WPIXDWYPNXJNI|YPYNSYDYNRZINEPNENIEHYNIXHLNRQNEKNWLWXINI|YQNSEHCYLNERXZINI|YNVEDLYKNFEI|PNSWI|NI|XZV|IPNXJNI|YWDNXSKNGXKGYDKPNYKIWDYHQNZFFYDOXPINRDWKVWKVNI|YWDNEGIWXKPNEINYBYDQNOXOYKINWKNAEDDWKVNGXHHWPWXKNSWI|NI|YNLWONV|XPIPNRY|WKLNI|YONIEHCWKVNEPNI|XZV|NI|YNIWOYNS|YKNIYPPNHWBYLNI|YDYNSYDYNKXINXKYNS|WINWKIYKPYDNWKNPIXDQNI|EKNKXSNYBYKNI|YNPFDWKVNRWDLPNPEKVNXBYDNI|YWDN|YELPNEPNWJNI|YQNI|XZV|INI|YDYNSEPNKXRXLQNOWPPWKVNWKNFEDIWGZHEDNXKNWKMZWDQNXJNI|YPYNFDYGWXZPNWKKXGYKIPNIXNS|XONYBYKNI|YNKEOYNXJNI|YWDNFDYLYGYPPXDPNSEPNENJEWHWKVNOYOXDQNGHEDYNHYEDKYLNI|EINAX|KNLZDRYQJWYHLNSEPNLYELNI|EIN|WPNSWLXSNEKLNG|WHLDYKN|ELNHYJINOEDHXIINLYGHEDWKVNI|EINI|YQNSYDYNVXWKVNIXNHWBYNEINCWKVPRYDYNRZINWKPIYELNXJNLXWKVNPXN|ELNVXKYNXKNIXNEKXI|YDNFHEGYNI|YQNOYKIWXKYLNRQNI|WPNIWOYNGHEDYNER|XDDYLNI|YN|XZPYNJXDNGYEPWKVNIXNGXKIEWKNIYPPNEKLN|EPIYKYLNESE"
-	elsif $which_ct == 4 #Ha
-		"DVUYVMTNDRHNTVMBNBACNCUNBDUVVNWVRUYNRICNJWNYCEMNFDCCYVBDNYBURLIMXLINRLHNHVRBDNURBDVUNBDRLNJWNMXTVNXNMCRBDVNXBNXNACEMHNLCBNMXOVNRMARWNXBNARYNBUEVNBDRBNDVNARYNRBN|UVYVLBNCEBNCTNDXYNFMRYYNSEBNYDVNZLVANBDRBNARYNCLMWNSVFREYVNMXZVN|VBVUNBDVNIUVRBNXLNRNYDX|AUXIDBYNWRUHNDVNARYNYBEHWXLINADRBNDVNARLBVHNBCNZLCANDVNHXHNLCBNJXMZNFCAYNSVFREYVNDVNARYNCSMXIVHNBCNJXMZNFCAYNSEBNSVFREYVNDVNARYNMVRULXLINBCNSVNRNUXFDNRLHN|UCY|VUCEYNHRXUWJRLNMRLHCALVUNRIUXFEMBEUXYBNRLHNSUVVHVUNCTNFRBBMVNDVNACEMHNSVFCJVNRLNRJVUXFRLNCUNREYBURMXRLNRSURDRJNFCJJRLHXLINMXZVNRNJCLRUFDNDXYNTMCFZYNRLHNDXYNDVUHYNDXYNY|CBBVHNRLHNDXYNUXLINYBURZVHNDXYNJVLNYVUORLBYNRLHNDXYNJRXHYNRBNBXJVYNLVOVUBDVMVYYNXBNHXHNYVVJNELRFFCELBRSMVNBCNDVUNBDRBNRNHVFXHVHMWNSCCZXYDNJEYXFRMNBDXLZXLINWCELINJRLNYDCEMHNDROVNFDCYVLNHVMXSVURBVMWNBCNSVNRNTRUJVUNRLHNLCBNRNFMVUIWJRLNMXZVNDXYNTRBDVUNRLHNSUCBDVUYNBD"
-	elsif $which_ct == 5 #Someone elses... AC529
-		"XNAHRGFNUBNEZPXGRZFNVGUMGXYYNFRIMXGXCNRINHXGNPHUJMHPNFUICUIXGYNARFFNCGRITNRPNZPNPHXRGNWGXZTBZYPYNPUNEUGGUANAUIPNPHXSNYHXNZYTXCNYPGZIMXNVXUVFXNPHZPNAXNHZ|XNIX|XGNYXXINSXYNRNYJVVUYXNPHXSNARFFNPHUJMHNIUPNZYNAXNYXICNRPNAHXINRPYNYPGXIMPHNHZYNWXXINFUAXGXCNYUNPHZPNRPNEZSNIUPNMXPNJVNRIPUNPHXRGNHXZCYNIUWFXNEXINZICNIUWFXNAUEXINZEWZYYZCUGYNZICNDXIPJGRUIYNFZCRXYNZICNPGZCXYAUEXINZICNWZWRXYNAHUNHZ|XNIX|XGNYXXINZNDUANAXFFNSXYNVXGHZVYNVZGPRDJFZGFSNDXIPJGRUIYNAHUNCUIPNTIUANZISPHRIMNUBNJYNZICNAHXGXNRPNDUEXYNBGUENUGNPHRITNHUANAXNPAUNCGU|XNERFXYNZDGUYYNPHXNEUUGNPUNIRMHPNRINPHXNGZRINPHZPNRPNERMHPNGXZDHNXENRINPREXNAXNCRCNIUPNCGR|XNXIPRGXFSNUINZDDUJIPNUBNPHXYXNVGXDRUJYNFUICUIXGYNAXNCGU|XNZNFRPPFXNUINUJGNUAINUINZDDUJIPNUBNPHZPNZILRUJYNEZPPXGNAHRDHNSUJNARFFNRNZENYJGXNYXPNZPNGXYPNCXZGNPXYYNIUANVXGERPNEXNPUNVJPNRPNRINPHRYNAZSNSUJNWXFUIMNPUNEXNZFGXZCSNSUJN"
-	elsif $which_ct == 6 #Karan
-		"GEWARUBPJURWPIAN|GASRUPAYRNUKLUIWPJKUGEKLUKAYPJUL|UVADYKGLEUY|KAPUYSSUKQAUKYSHUYILWKUNLWUYERUQGBUTQGOQUQYJUPAYOQARUWJUQAPAUTQLUTLWSRUQYVAUADFAOKARUGKUKLUAERUSGHAUKQGJUTQNURGREKUNAUKQGEHUL|URLGEMUJLBAUMLLRU|LPUNLWPU|YBGSNUGEJKAYRULUKQGEHGEMULESNUL|UNLWPJAS|UJAAUQLTUGVAUMLKUKLUKAYVAUYERUJSYVAUYERUNLWPUFLLPUTAYHU|YKQAPUTGKQUQGJUQAYPKUOSLMMARUSGHAUYURPGFFGEMUFYEUGURGRUQLFAU|LPUJLBAKQGEMUKLUOLBAULWKULUKQGJUKLUJAAUTQYKUYUFPAKKNUFYGPUNLWUYERUQAUBYRAUKQYKURYNUTQAEUNLWURPLVAUYTYNUKLMAKQAPU|LWPUBLEKQJUYMLUJAAUTQYKUQAUQYJUMGVAEUWJUYSSUYJUTAUKQLWMQKUIAOYWJAUTAUTAPAUQGJUHGEUIWKUG|UQAJUELKUGKUBWJKUQYVAUIAAEURLEAUIAOYWJAUL|UQGJUSLVAU|LPUAAUYERUNAKUNLWVAUELKUMLKUQGBUKLUBYPPNUMAKUYSAOURWPIAPVGSSAUGEUKQAUBGERUKLUBYPPNUQAPUQAUBYPPNUQAPULEUBYKPGBLENUQAUQYRUEAVAPULEOAUJYGRUYUTLPRUYERUTQYKUG|UQAUQYRUQLTUYUOLEVWSJGVAUJEYKOQGEMUYKUJLOGYSUJYSVYKGLEUBGMQ"
-	end
+	"SBD|UQN|FGRD|UD|GUD|OKKQ|DUIN|FGHRPG|FGK|NUAM|LRSFUIQD|HW|FGKIS|OHQQKFD|WVUMMKN|DAUSFVC|IQFH|FGKIS|WULKD|UQN|FGKIS|ESUMMKSD|LVRQP|UOHRF|FGKA|FH|EKUSIDHAKQKDD|FGKC|VIYKN|UVV|FGID|UWFKSQHHQ|IQ|AKAHSIKD|HW|PSKKQ|DRQQC|SHAUQFIL|FUVOHFGUCD|CHR|LUQ|DKK|U|PVKUA|HW|U|GIVV|EIFGIQ|U|WKE|AIVKD|H|WSHHA|YUVVKC|WSHA|GKSK|EGKQ|FID|WIQK|DUIN|AUSIUQ|UG|LUQ|CHR|DUIN|FKDD|UEUBK|FH|FGK|QKE|YUVRK|HW|FGID|VHLUVIFC|DH|FGK|FEH|WHSLKD|EKSK|UF|EHSB|GKSK|UD|KYKSCEGKSK|FGK|IQGKSKQF|EIVV|FH|KQZHC|UQN|FGK|LISLRADFUQFIUV|EIVV|UPUIQDF|KQZHCAKQF|AUSIUQD|EIVV|GUN|U|AKFGHN|HW|UDDIDFIQP|IFDKVW|OC|FUBIQP|WSHA|GKS|MHLBKF|UD|FGK|UWFKSQHHQ|EHSK|HQ|U|MIQF|OHFFVK|LHSBKN|EIFG|EGIFK|SUP|WSHA|EGILG|DGK|IQYIFKN|FKDD|FH|NSIQB|FKDDD|RQUDDIDFKN|MHEKS|HW|NSKUAIQP|GHEKYKS|OKIQP|KQHRPG|WHS|GKS|DROVIAUFIHQ|UF|MSKDKQF|DGK|NKLVIQKN|KXLKMF|FGK|AKSKDF|DIM|UQN|FGKQ|AUSIUQ|FHHB|U|MRVV|W"
 end
 
 $found_word = false
 $ct
 $minimum_substitution_alphabet_length
-
-$DEBUG_OUTPUT = false
 
 def exercise7b_start
 	#Initialise Tess system
@@ -78,48 +60,48 @@ end
 
 ## 1
 def find_subst_with_word_analysis split_words, substitution_alphabet
+	#If a word is found from a previous or future (weird but it's like git branches being ahead) function call, then return the current substitution alphabet
 	return substitution_alphabet if $found_word
 	words = words_which_arent_in_substitution_alphabet(split_words, substitution_alphabet).sort_by{|k,v| k.length}.reverse  ## Call 2
-	return substitution_alphabet if words.length == 0
+	#If there are no words found, then return the substitution alphabet we have
+	return substitution_alphabet if words.length == 0 
 
-	if $DEBUG_OUTPUT
-		puts "[find_subst_with_word_analysis]".cyan
-		puts "Words which aren't complete in the substituion alphabet:".blue + "\n#{words}\n".yellow
-	end
-
+	#For each word that we found in the substitution alphabet
 	for i in 0...words.length do 
 		word = words[i]
-		puts "Checking word: ".blue+word.green if $DEBUG_OUTPUT
 
-		potential_substitution_alphabets = find_substitution_alphabets_in_tess word, substitution_alphabet ## Call 4
+		#Find substitution alphabets which match this specific word
+		potential_substitution_alphabets = find_substitution_alphabets_in_tess word, substitution_alphabet 4
+
 		for j in 0...potential_substitution_alphabets.length do 
+			#Find the new substitution alphabet that each potentional substitution alpahbet produces
 			new_substitution_alphabet = potential_substitution_alphabets[j].merge(substitution_alphabet)
-			# puts "new_substitution_alphabet = [#{new_substitution_alphabet}]"
 
+			#Get the plaintext from the new alphabet
 			plaintext = substitution_cipher $ct, new_substitution_alphabet, true
-			puts "plaintext:\n#{plaintext}" if $DEBUG_OUTPUT
 
-			###ToDo:
-			### Check all words in the plaintext which are whole and if any are not in tess then skip to the next alphabet
+			#Check the amount of whole words in the plaintext (This would not work if we didn't know that all words would exist in tess27)
 			whole_words_in_pt = get_whole_words_in_pt $ct, new_substitution_alphabet
-			puts "whole_words_in_pt:\n#{whole_words_in_pt}" if $DEBUG_OUTPUT
 			count_of_non_whole_words = count_non_words_in_array whole_words_in_pt, new_substitution_alphabet
-			puts "count_of_non_whole_words:\n#{count_of_non_whole_words}" if $DEBUG_OUTPUT
 
+			#If there are more than 2 dodgy words, throw it away
 			break if count_of_non_whole_words > 2
 
 
+			#Find a new substitution alphabet with the new alphabet (Call this function again, but with an updated alphabet)
 			new_potential_substitution_alphabet = find_subst_with_word_analysis split_words, new_substitution_alphabet
 			return new_potential_substitution_alphabet if $found_word
 
 			unless new_potential_substitution_alphabet == {}
 				new_potential_substitution_alphabet_length = new_potential_substitution_alphabet.length
+
+				#If the new alphabet is less than the minimum we want to search for then don't finish yet
 				next if new_potential_substitution_alphabet_length < $minimum_substitution_alphabet_length
-				puts "Size of new_potential_substitution_alphabet [#{new_potential_substitution_alphabet_length}]".red if $DEBUG_OUTPUT
 
+				#Find the amount of non words again to check if we return yet or keep searching
 				count_of_non_words = count_non_words_in_plaintext plaintext
-				puts "Count of non words [#{count_of_non_words}]".green if $DEBUG_OUTPUT
 
+				#If we have found a solution then kill the tree
 				$found_word = true
 				return new_potential_substitution_alphabet if count_of_non_words <= 2
 			end
@@ -127,10 +109,11 @@ def find_subst_with_word_analysis split_words, substitution_alphabet
 		end
 	end
 
+	#This should be the final alphabet on the first call of this function
 	return substitution_alphabet
 end
 
-## 2
+#This function finds words which are not completed words in the alphabet - it's like matching word [THE] but only having T and H map to a letter, so 'THE' would be a word not in the alphabet
 def words_which_arent_in_substitution_alphabet split_words, substitution_alphabet
 	words = []
 	for i in 0...split_words.length do 
@@ -140,47 +123,51 @@ def words_which_arent_in_substitution_alphabet split_words, substitution_alphabe
 	words
 end
 
-## 3
+#This just checks if a word is not contained in the alphabet
 def word_is_not_contained_in_substiution_alphabet word, substitution_alphabet
-	# puts "[word_is_not_contained_in_substiution_alphabet]".cyan
-	# puts "substitution_alphabet:\n#{word}-#{substitution_alphabet}"
 	for l in 0...word.length do
 		return true unless substitution_alphabet.key?word[l]
 	end
 	return false
 end
 
-## 4
+#Finds an alphabet in tess that matches the words
 def find_substitution_alphabets_in_tess ciphertext, substitution_alphabet
+
+	#Create an empty regex
 	regex_matcher = ""
 
 	for i in 0...ciphertext.length do 
 		word = ciphertext[i]
 
+		#If the key is in the alphabet, then just add the letter
 		if substitution_alphabet.key?word 
 			regex_matcher += "#{substitution_alphabet[word]}"
 		else
+			#But if the letter is not in the alphabet then add in a regex for any letter
 			regex_matcher += "[A-Z]"
 		end
 	end
 
+	#If the regex is the same size as the ciphertext, then all letters map to another letter, so just end now
 	return {} if regex_matcher.length == ciphertext.length
 
 
+	#Find matching plaintext words from the regex
 	matching_plaintext_words = get_matching_words_from_tess regex_matcher, ciphertext.length
 
+	#Finds all potential substitutions for the matching words
 	potential_substitutions = []
 	for i in 0...matching_plaintext_words.length do 
 		matching_word = matching_plaintext_words[i]
 
+		#Check if the matching word can contain any alphabets for other words
 		new_substitution_alphabet = get_subst_from_potential_word matching_word, ciphertext, substitution_alphabet
-		# puts "New Substitution alphabet [#{new_substitution_alphabet}]".cyan
 
+		#If the word can create other words, add it to the array
 		potential_substitutions << new_substitution_alphabet unless new_substitution_alphabet == {}
-
-		puts "Matching word: "+matching_word.red if $DEBUG_OUTPUT#unless new_substitution_alphabet == {}
 	end
-	
-	puts "\n" if $DEBUG_OUTPUT
+
+	#Return all potential substitution alphabets which match the word regex
 	potential_substitutions
 end
