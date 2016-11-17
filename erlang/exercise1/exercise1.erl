@@ -4,54 +4,76 @@
 cipher_text()->
 	"GWHKOGWADCGGWPZSHCHVWBYCTFSHIFBWBUHCHVSJWQOFOUSOBUSZGKWTSTSZHOZACGHOGWTGVSVORPSSBVCIBRSRIDHVOHVWZZZWYSOGQCFBSRHVWBUPMHVCGSHCVSFGIDSFTWBSQZSFWQGWBBCQSBHZMOGHVSGZWUVHVORPSSBWBTZWQHSRWHKOGGCASKVOHIBTCFHIBOHSHVOHGVSVORSBQCIBHSFSRHVSGCBGOBRBCHHVSTOHVSFKVCRSGDWHSVWGBOFFCKBSGGKOGTOFZSGGGHOFQVSROBRWFCBSRHVOBHVSMOBRVORHCHVSTIZZHVSUWTHCTQVOFWHMOGGVSOUOWBHVCIUVHCTVSFRIGHMPCCHGGVSOZACGHDWHWSRHVCGSVOPWZWASBHGTCFHVSEIWNNWBUHCKVWQVHVSMVORPSSBGIPXSQHSROBRTSZHVCKVCDSZSGGZWTSKOGTCFHVSWFCKBSFOVGVSGOWRGHWZZGWUVWBUWBDWHMCTVSFGSZTHVSMRWRBHYBCKHVOHWKCFSHVCGSCJSFHVSFCIUVSGHDOFHCTHVSFCORHCGOJSHVSGSDFSHHMCBSGVSPCIUVHTCFASBCHVSMRWRBCHYBCKWHOBRHVSMRWRBHHVWBYHVOHVSQVCGSHVSQCZCIFCAMDFSHHMTFCQYBCVCKQCIZRHVSMWTHVSMVORYBCKBDSFVODGHVSMKCIZRBCHVOJSQOFSRTCFHVSMRCBHQOFSAIQVTCFVWADCCFHVWBUHVSBGVSUFWSJSRTCFHVSPSZCJSRAOBKVCGSQCBJSBHWCBOZGHOBROFRCTXIRUSASBHVORQOIGSRVSF".
 
-shift_letter(Letter, Key)->
+shift_letter(Letter, KeyValue)->
 	LetterValue = hd(Letter),
-	KeyValue = Key,
-
 	NewValue = LetterValue + KeyValue,
 
 	if
 		NewValue > 90 ->
-			ShiftedValue = NewValue - 26;
+			[NewValue - 26];
 		NewValue < 65 ->
-			ShiftedValue = NewValue + 26;
+			[NewValue + 26];
 		true ->
-			ShiftedValue = NewValue		
-	end,
-
-	[ShiftedValue].
+			[NewValue]		
+	end.
 
 caesar_decrypt([Head|[]], Key)->
 	shift_letter([Head], Key);
 caesar_decrypt([Head|Tail], Key)->
 	shift_letter([Head], Key) ++ caesar_decrypt(Tail, Key).
 
-debug_print([Head|[]])->
-	io:fwrite("{"++Head++"}\n");
-debug_print([Head|Tail])->
-	io:fwrite("["++Head++"]\n"),
-	debug_print(Tail).
-	
-% A = 0
-% Z = 25
+% debug_print([{X,Y}|[]])->
+% 	io:fwrite("[{"++integer_to_list(X)++","++integer_to_list(Y)++"}]\n");
+% debug_print([{X,Y}|Tail])->
+% 	io:fwrite("[{"++integer_to_list(X)++","++integer_to_list(Y)++"}]\n"),
+% 	debug_print(Tail).
+
+
+countWordsInString(Text, Matcher) ->
+	countWordsInString(Text, Matcher, 0).
+countWordsInString(Text, Matcher, Count) ->
+	Pos = string:str(Text, Matcher),
+	if 
+		Pos > 0 ->
+			countWordsInString(string:substr(Text, Pos + 1), Matcher, Count + 1);
+		true ->
+			Count
+	end.
+
+
+testLoop(Index, FinishIndex, CipherText, Matcher) ->
+	testLoop(Index, FinishIndex, CipherText, Matcher, []).
+
+testLoop(Index, FinishIndex, CipherText, Matcher, Array) ->
+	PlainText = caesar_decrypt(CipherText, Index),
+	Count = countWordsInString(PlainText, Matcher),
+
+	Tuple = {Index, Count},
+	if 
+		Index < FinishIndex ->
+			testLoop(Index + 1, FinishIndex, CipherText, Matcher, [Tuple | Array]);
+		true ->
+			[Tuple | Array]
+	end.
+
+get_first_elem([{A,B}|_]) ->
+	{A,B}.
+
 start()->
 	CipherText = cipher_text(),
-	Key = 12,
-
-	Split = string:tokens("THE|TESS|OF|THE|DUBERS", "|"),
-	io:fwrite("Split ["++Split++"]x\n"),
-	debug_print(Split),
-
-	% THE = 4
-	% TO = 3
-	% TOKENS = 2
-	DummyCipher = "THETOTOKENSTHEKOOOTOKENSTHELOPTHE"
-	Words = ["TO", "THE", "TOKENS"],
-
-	% Letter = hd(C),
-	% io:fwrite("The letter character ["++C++"] has ascii value of ["),
-	% io:fwrite(integer_to_list(Letter)),
-	% io:fwrite("]\n"),
 
 
-	io:fwrite("Caesar Decrypt:\n" ++ caesar_decrypt(CipherText, Key) ++ "\n").
+
+	Array = testLoop(0, 25, CipherText, "THE"),
+	SortedArray = lists:reverse(lists:keysort(2, Array)),
+
+	{KeyR, _} = get_first_elem(SortedArray),
+
+	PlainTextReal = caesar_decrypt(CipherText, KeyR),
+	PlainText30 = string:sub_string(PlainTextReal, 1, 30),
+	io:fwrite("Key ["++integer_to_list(KeyR)++"]:\n"++PlainText30++"\n"),
+
+	ok.
+
+
+
