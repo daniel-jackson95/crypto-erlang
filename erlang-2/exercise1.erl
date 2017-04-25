@@ -91,7 +91,7 @@ chiSquared(PlainText) ->
 
 keyLoop(Index, FinishIndex, CipherText, Array) ->
 	PlainText = caesar_decrypt(CipherText, Index),
-	ChiSquared = chiSquared(PlainText),
+	ChiSquared = chiSquaredLetterLoop("A", "Z", PlainText, 0),
 	io:fwrite("With a key of ["++integer_to_list(Index)++"] - ["++float_to_list(ChiSquared, [{decimals, 5}])++"]\n"),
 	% ChiSquared = "64254325.f",
 	Tuple = {Index, ChiSquared},
